@@ -2,12 +2,40 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="icon" href="icon/192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="icon/300.png" />
+    <meta name="msapplication-TileImage" content="icon/300.png" />
+    <link rel="shortcut icon" href="icon/32.png"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="full-screen" content="yes"><!--UC强制全屏-->
+    <meta name="browsermode" content="application"><!--UC应用模式-->
+    <meta name="x5-fullscreen" content="true"><!--QQ强制全屏-->
+    <meta name="x5-page-mode" content="app"><!--QQ应用模式-->
     <title>简单搜索</title>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="./font_1230786_swt4kkie8ym/iconfont.css">
+    <script src="./font_1230786_swt4kkie8ym/iconfont.js"></script>
+    <link rel="stylesheet" href="./css/sou.css">
 </head>
 <body>
-    <form action="https://www.baidu.com/s">
-        <input type="text" name="wd">
-        <button type="submit">搜索</button>
-    </form>
+    <div id="content">
+        <div class="con">
+            <div class="shlogo"></div>
+            <div class="sou">
+                <form action="https://www.baidu.com/s">
+                    <input class="wd" type="text" name="wd" placeholder="请输入搜索内容">
+                    <button><i style="font-size: 20px;" class="iconfont icon-sousuo"></i></button>
+                </form>
+                <ul>
+                    <li data-s="baidu" target="_blank"><i style="background-image: url(icon/baidu.svg);"></i>百度一下</li>
+                    <li data-s="google" target="_blank"><i style="background-image: url(icon/g.svg);"></i>Google</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,189 @@
+@charset "utf-8";
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+html {
+    font-family: 'Noto Sans SC Sliced', PingFangSC-Light, Microsoft YaHei UI, Microsoft YaHei, helvetica, sans-serif;
+    font-weight: 300;
+    color: #000;
+}
+
+form,
+input,
+button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+input::-webkit-input-placeholder {
+    color: #ccc;
+    letter-spacing: 2px;
+    font-size: 16px;
+}
+
+ul,
+li {
+    display: block;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+}
+
+.con {
+    width: 100%;
+    transition: 1s all;
+    margin: auto;
+    min-width: 320px;
+    height: 380px;
+    position: absolute;
+    left: 0;
+    top: -100px;
+    right: 0;
+    bottom: 0;
+}
+
+.con .shlogo {
+    position: relative;
+    width: 480px;
+    height: 120px;
+    margin: 20px auto;
+    background: url(../icon/logo.svg) no-repeat center/cover;
+}
+
+.con .shlogo a {
+    width: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.sou {
+    max-width: 680px;
+    height: 50px;
+}
+
+.con .sou {
+    max-width: 680px;
+    position: relative;
+    width: calc(100% - 60px);
+    min-width: 320px;
+    margin: 0 auto;
+}
+
+.con .sou form {
+    width: 100%;
+    /*border: 1px solid #ddd;*/
+    height: 50px;
+    display: block;
+    margin: 10px auto 30px;
+    position: relative;
+}
+
+.con .sou form .wd {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    line-height: 100%;
+    text-indent: 20px;
+    font-size: 18px;
+}
+
+.con .sou form .wd:focus {
+    background: #fff;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    border-color: #fff
+}
+
+.sou form button {
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    z-index: 10;
+    right: 6px;
+    top: 6px;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #777;
+}
+
+.con .sou ul {
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.con .sou ul li {
+    width: 120px;
+    margin: 0 10px;
+    float: left;
+    -webkit-tap-highlight-color: transparent;
+    background: #eee;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-indent: 30px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 20px;
+}
+
+.con .sou ul li:active {
+    background: #fff;
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, .1);
+}
+
+.con .sou ul li i {
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 40px;
+    left: 0;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scale(0.7);
+}
