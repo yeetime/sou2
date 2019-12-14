@@ -187,3 +187,15 @@ a {
     background-position: center;
     transform: scale(0.7);
 }
+
+.foot {
+    position: absolute;
+    bottom: 10px;
+    z-index: 1000;
+    text-align: center;
+    width: 100%;
+    color: #999;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+}
