@@ -14,15 +14,26 @@ $(document).ready(function() {
     $(".se-li").click(function(){
         url = $(this).attr('url');
         name = $(this).attr('name');
+        img = $(this).attr('img')
         $("#search").attr("action",url);
         $(".wd").attr("name",name);
+        $(".se").attr("src",img);
         $(".search-engine").hide();
     })
+    $(document).on('click',function(e){
+        var con = $(".search-engine");
+        var img = $(".se");
+        if(!con.is(e.target) && con.has(e.target).length === 0&&!img.is(e.target) && img.has(e.target).length === 0){
+            if($(".search-engine").is(":visible")){
+               $(".search-engine").hide();
+            }
+        }
+    });
+
     //菜单点击
     $("#menu").click(function(event) {
         $(this).toggleClass('on');
         $(".list").toggleClass('closed');
-        $(".search-engine").hide();
         //$(".mywth").toggleClass('hidden');
     });
     $("#content").click(function(event) {

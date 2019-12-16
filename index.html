@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <link rel="icon" href="icon/192.png" sizes="192x192" />
-    <link rel="apple-touch-icon-precomposed" href="icon/300.png" />
-    <meta name="msapplication-TileImage" content="icon/300.png" />
-    <link rel="shortcut icon" href="icon/32.png"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -114,45 +110,65 @@
         <div class="con">
             <!-- <div class="shlogo"></div> -->
             <div class="sou">
-                <form id="search" action="https://www.dogedoge.com/results">
-                    <img class="se" src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg" title="切换搜索引擎"></img>
-                    <input class="wd" type="text" name="q" placeholder="请输入搜索内容">
-                    <button class="s"><i style="font-size: 20px;" class="iconfont icon-sousuo"></i></button>
+                <form id="search" action="https://www.baidu.com/s">
+                    <img class="se" src="./icon/baidu.ico" title="切换搜索引擎"></img>
+                    <input class="wd" type="text" name="wd" placeholder="请输入搜索内容">
+                    <button class="s">
+                        <i style="font-size: 20px;" class="iconfont icon-sousuo"></i>
+                    </button>
                 </form>
                 <div class="search-engine" style="display: none;">
                     <div class="search-engine-head">
                         <strong class="search-engine-tit">选择搜索引擎：</strong>
                     </div>
                     <ul class="search-engine-list">
-                         <li class="se-li" url="https://www.baidu.com/s" name="wd"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>百度</li>
-                         <li class="se-li" url="https://www.google.com/search" name="sxsrf"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>谷歌</li>
-                         <li class="se-li" url="https://cn.bing.com/search" name="q"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>必应</li>
-                         <li class="se-li" url="https://cn.bing.com/search" name="q"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>必应</li>
-                         <li class="se-li" url="https://cn.bing.com/search" name="q"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>必应</li>
-                         <li class="se-li" url="https://cn.bing.com/search" name="q"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>必应</li>
-                         <li class="se-li" url="https://cn.bing.com/search" name="q"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>必应</li>
-                         <li class="se-li" url="https://cn.bing.com/search" name="q"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>必应</li>
-                         <li class="se-li" url="https://cn.bing.com/search" name="q"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>必应</li>
+                         <li class="se-li" url="https://www.baidu.com/s" name="wd" img="./icon/baidu.ico"><img src="./icon/baidu.ico"></img>百度</li>
+                         <li class="se-li" url="https://www.google.com/search" name="q" img="./icon/google_1.png"><img src="./icon/google_1.png"></img>谷歌</li>
+                         <li class="se-li" url="https://cn.bing.com/search" name="q" img="./icon/bing.ico"><img src="./icon/bing.ico"></img>必应</li>
+                         <li class="se-li" url="https://www.dogedoge.com/results" name="q" img="./icon/doge_ico.png"><img src="./icon/doge_ico.png"></img>多吉</li>
+                         <li class="se-li" url="https://mijisou.com/" name="q" img="./icon/mijisou.png"><img src="./icon/mijisou.png"></img>秘迹</li>
                     </ul>
                 </div>
                 <div class="quick-div">
                     <ul class="quick-ul">
-                        <li class="quick" data-s="baidu" target="_blank"><i style="background-image: url(icon/baidu.svg);"></i>百度一下</li>
-                        <li class="quick" data-s="google" target="_blank"><i style="background-image: url(icon/g.svg);"></i>Google</li>
-                        <li class="quick" data-s="baidu" target="_blank"><i style="background-image: url(icon/baidu.svg);"></i>百度一下</li>
-                        <li class="quick" data-s="baidu" target="_blank"><i style="background-image: url(icon/baidu.svg);"></i>百度一下</li>
-                        <li class="quick" data-s="baidu" target="_blank"><i style="background-image: url(icon/baidu.svg);"></i>百度一下</li>
-                        <li class="quick" data-s="baidu" target="_blank"><i style="background-image: url(icon/baidu.svg);"></i>百度一下</li>
-                        <li class="quick" data-s="baidu" target="_blank"><i style="background-image: url(icon/baidu.svg);"></i>百度一下</li>
-                        <li class="quick" data-s="baidu" target="_blank"><i style="background-image: url(icon/baidu.svg);"></i>百度一下</li>
+                        <li class="quick" data-s="bilibili" target="_blank">
+                            <a href="https://www.bilibili.com/">
+                                <i style="background-image: url(./icon/bilibili.png);"></i>
+                                哔哩哔哩
+                            </a>
+                        </li>
+                        <li class="quick" data-s="github" target="_blank">
+                            <a href="https://github.com/">
+                                <i style="background-image: url(./icon/github.ico);"></i>
+                                GitHub
+                            </a>
+                        </li>
+                        <li class="quick" data-s="v2ex" target="_blank">
+                            <a href="https://www.v2ex.com/">
+                                <i style="background-image: url(./icon/v2ex.png);"></i>
+                                V2EX
+                            </a>
+                        </li>
+                        <li class="quick" data-s="steam" target="_blank">
+                            <a href="https://store.steampowered.com/">
+                                <i style="background-image: url(./icon/steam.ico);"></i>
+                                Steam
+                            </a>
+                        </li>
+                        <li class="quick" data-s="scp" target="_blank">
+                            <a href="http://scp-wiki-cn.wikidot.com/">
+                                <i style="background-image: url(./icon/scp.png);"></i>
+                                scp基金会
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
             </div>
         </div>
         <div class="foot">
-            © 2016-2019 by
-            <a href="#">歪歪喂</a> . All rights reserved.  <a rel="nofollow" href="https://5iux.github.io/sou/" target="_blank" style="font-size: 12px;">
+           Made with by <b>yeetime</b>&nbsp;
+            <a rel="nofollow" href="https://github.com/yeetime/sou2" target="_blank" style="font-size: 12px;">
                 <i class="iconfont icon-github"></i>
             </a>
         </div>
