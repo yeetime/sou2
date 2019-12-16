@@ -175,7 +175,7 @@ a {
   left: 0;
   width: 100%;
   background: #FFF;
-  padding: 15px 0 15px 15px;
+  padding: 15px 0px 0px 0px;
   border-radius: 5px;
   box-shadow: 0px 5px 20px 0px #d8d7d7;
   transition: all 0.3s;
@@ -185,6 +185,7 @@ a {
 
 .search-engine-head{
   overflow: hidden;
+  text-indent: 20px;
   margin-bottom: 10px;
   padding-right: 15px;
 }
@@ -200,7 +201,6 @@ a {
     padding: 0;
     height: 40px;
     margin: 0 auto;
-    display: flex;
     justify-content: left;
 }
 
@@ -234,6 +234,7 @@ a {
   text-align: left;
   text-indent: 5px;
   font-size: 14px;
+  left:15px;
   padding: 5px 10px 5px 10px;
   margin: 0 10px 10px 0;
   background: #f9f9f9;
@@ -252,16 +253,17 @@ a {
   margin-top: 2.5px;
 }
 
-.quick-ul {
+.quick-div {
     margin: 0 auto;
-    display: flex;
+    width: 100%;
     justify-content: left;
 }
 
 .quick {
-    width: 120px;
+    width: 17%;
     height: 40px;
     margin: 10px 10px;
+    float: left;
     -webkit-tap-highlight-color: transparent;
     background: #eee;
     font-size: 16px;
