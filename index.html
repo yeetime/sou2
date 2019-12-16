@@ -112,16 +112,28 @@
 
     <div id="content">
         <div class="con">
-            <div class="shlogo"></div>
+            <!-- <div class="shlogo"></div> -->
             <div class="sou">
-                <form action="https://www.dogedoge.com/results">
-                    <img class="se" src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>
+                <form id="search" action="https://www.dogedoge.com/results">
+                    <img class="se" src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg" title="切换搜索引擎"></img>
                     <input class="wd" type="text" name="q" placeholder="请输入搜索内容">
                     <button class="s"><i style="font-size: 20px;" class="iconfont icon-sousuo"></i></button>
                 </form>
-                <ul>
-                    <li data-s="baidu" target="_blank"><i style="background-image: url(icon/baidu.svg);"></i>百度一下</li>
-                    <li data-s="google" target="_blank"><i style="background-image: url(icon/g.svg);"></i>Google</li>
+                <div class="search-engine" style="display: none;">
+                    <div class="search-engine-head">
+                        <strong class="search-engine-tit">选择搜索引擎：</strong>
+                    </div>
+                    <ul class="search-engine-list">
+                         <li class="se-li" url="https://www.baidu.com/s" name="wd"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>百度</li>
+                         <li class="se-li" url="https://www.google.com/search" name="sxsrf"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>谷歌</li>
+                         <li class="se-li" url="https://cn.bing.com/search" name="q"><img src="https://adzhp.cn//wp-content/themes/wordbook/images/logo_2.jpg"></img>必应</li>
+                    </ul>
+                </div>
+                <ul class="quick-ul">
+                    <li class="quick" data-s="baidu" target="_blank"><i style="background-image: url(icon/baidu.svg);"></i>百度一下</li>
+                    <li class="quick" data-s="google" target="_blank"><i style="background-image: url(icon/g.svg);"></i>Google</li>
+                    <li class="quick" data-s="baidu" target="_blank"><i style="background-image: url(icon/baidu.svg);"></i>百度一下</li>
+
                 </ul>
             </div>
         </div>
