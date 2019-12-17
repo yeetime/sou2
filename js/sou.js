@@ -1,3 +1,15 @@
+/*
+作者:D.Young
+主页：https://yyv.me/
+github：https://github.com/5iux/sou
+日期：2019-07-26
+版权所有，请勿删除
+❶❷❸❹❺❻❼❽❾❿
+由 yeetime 修改
+github：https://github.com/yeetime/sou2
+日期：2019-12-13
+*/
+
 $(document).ready(function() {
     //判断窗口大小，添加输入框自动完成
     var wid = $("body").width();
