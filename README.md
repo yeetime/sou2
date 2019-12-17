@@ -6,7 +6,7 @@
 
 ###  GIF
 
-![简单搜索](https://raw.githubusercontent.com/5iux/sou/master/img0726.gif)
+![自由导航](https://github.com/yeetime/sou2/blob/master/sou2.gif)
 > （图片效果，以实际页面为准）
 
 ## 示例页面：
