@@ -221,7 +221,6 @@ a {
   height: 30px;
   line-height: 30px;
   text-align: left;
-  text-indent: 5px;
   font-size: 14px;
   left:15px;
   padding: 5px 10px 5px 10px;
@@ -485,7 +484,6 @@ a {
     .con .sou ul li {
         width: 100px;
         font-size: 12px;
-        text-indent: 40px;
     }
     .quick{
         left: 0px;
