@@ -50,13 +50,24 @@ $(document).ready(function() {
     $("#menu").click(function(event) {
         $(this).toggleClass('on');
         $(".list").toggleClass('closed');
-        //$(".mywth").toggleClass('hidden');
     });
     $("#content").click(function(event) {
         $(".on").removeClass('on');
         $(".list").addClass('closed');
-
-        //$(".mywth").removeClass('hidden');
     });
 
+    //菜单展开动画
+    $(".set").click(function() {
+        if($("#controll").is(":hidden")){
+            $("#controll").show();
+            $("#controll")[0].style.height = 200+"px";
+            $(".set").html("关闭");
+        } else {
+            $("#controll")[0].style.height = 0+"px";
+            $("#controll").hide();
+            $(".set").html("<i class='iconfont icon-kongzhi'></i> 设置");
+        }
+
+
+    });
 });

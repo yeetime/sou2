@@ -453,7 +453,7 @@ a {
     width: 100%;
     height: 40px;
     line-height: 40px;
-    margin: 30px 0 0;
+    margin: 10px 0 0;
     text-align: left;
     text-indent: 10px;
     /*border-bottom: 1px dashed #dedede;*/
@@ -466,6 +466,46 @@ a {
     color: #29f;
     margin-right: 5px;
     font-weight: normal;
+}
+
+.list ul li.set {
+    width: 70px;
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+    background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+    background-color:#eae0c2;
+    border-radius:15px;
+    border:2px solid #333029;
+    display:inline-block;
+    cursor:pointer;
+    color:#505739;
+    font-family:Arial;
+    font-size:14px;
+    font-weight:bold;
+    padding:1px 1px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ffffff;
+    float: right;
+    text-align: center;
+}
+
+.list ul li.set:hover {
+    background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+    background-color:#ccc2a6;
+}
+
+.list ul li.set:active {
+    position:relative;
+    top:1px;
+}
+
+#controll {
+    width: 100%;
+    margin: 3 0px 0 0;
+    background: #708090;
+    border-radius:10px;
+    position: relative;
+    overflow: hidden;
+    transition: height 0.6s;
 }
 
 @media (max-width: 640px) {
@@ -513,37 +553,6 @@ a {
         display: none;
     }
     .mywth.hidden {
-        display: none;
-    }
-}
-
-@media (max-height: 420px) {
-    .con {
-        margin: 0;
-        top: 0px;
-    }
-    .con .sou form .wd {
-        text-indent: 50px;
-    }
-    .con .sou form:after {
-        content: "";
-        display: block;
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        left: 10px;
-        top: 10px;
-        background: url(icon/lg.svg) no-repeat center/cover;
-        border-radius: 50%;
-        overflow: hidden;
-    }
-    .con .shlogo {
-        display: none;
-    }
-    .home,
-    #menu,
-    .mywth,
-    .foot {
         display: none;
     }
 }
