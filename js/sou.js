@@ -67,7 +67,15 @@ $(document).ready(function() {
             $("#controll").hide();
             $(".set").html("<i class='iconfont icon-kongzhi'></i> 设置");
         }
-
-
     });
+
+    //设置默认搜索引擎
+    $("#save").click(function(){
+        var name = $("input[name='se_default']").val();
+        Cookies.set('se_default', name, { expires: 30 });
+        alert("默认搜索引擎已保存");
+    });
+
+    //初始化
+    $("input[name='se_default']").val(Cookies.get('se_default'));
 });
