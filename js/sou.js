@@ -70,12 +70,43 @@ $(document).ready(function() {
     });
 
     //设置默认搜索引擎
-    $("#save").click(function(){
-        var name = $("input[name='se_default']").val();
+    $(".se_list").on("click",".se_l",function(){
+
+        var name = $(this).val();
         Cookies.set('se_default', name, { expires: 30 });
         alert("默认搜索引擎已保存");
     });
 
     //初始化
-    $("input[name='se_default']").val(Cookies.get('se_default'));
+    var se_list = {
+        1:{
+            id      :1,
+            title   :"百度",
+            url     :"https://www.baidu.com/s",
+            name    :"wd",
+            img     :"./icon/baidu.ico",
+        },
+        2:{
+            id      :2,
+            title   :"谷歌",
+            url     :"https://www.google.com/search",
+            name    :"q",
+            img     :"./icon/google_1.png",
+        },
+    };
+
+    var se_default = Cookies.get('se_default');
+
+    setinit();
+    function setinit () {
+        var html = "";
+        for(var i in se_list){
+            if(i == se_default){
+                html+="<input type='radio' class='se_l' name='se_default' value='"+i+"' checked='checked'> "+ se_list[i]["title"];
+            } else {
+                html+="<input type='radio' class='se_l' name='se_default' value='"+i+"'> "+ se_list[i]["title"];
+            }
+        }
+        $(".se_list").html(html);
+    }
 });
