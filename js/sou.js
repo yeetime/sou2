@@ -11,6 +11,61 @@ github：https://github.com/yeetime/sou2
 */
 
 $(document).ready(function() {
+
+    //本地数据
+
+    //搜索引擎
+    var se_list = {
+        'baidu':{
+            id      :1,
+            title   :"百度",
+            url     :"https://www.baidu.com/s",
+            name    :"wd",
+            img     :"./icon/baidu.ico",
+        },
+        'google':{
+            id      :2,
+            title   :"谷歌",
+            url     :"https://www.google.com/search",
+            name    :"q",
+            img     :"./icon/google_1.png",
+        },
+        'bing':{
+            id      :3,
+            title   :"必应",
+            url     :"https://cn.bing.com/search",
+            name    :"q",
+            img     :"./icon/bing.ico",
+        },
+        'dogedoge':{
+            id      :4,
+            title   :"多吉",
+            url     :"https://www.dogedoge.com/results",
+            name    :"q",
+            img     :"./icon/doge_ico.png",
+        },
+        'mijisou':{
+            id      :5,
+            title   :"秘迹",
+            url     :"https://mijisou.com",
+            name    :"q",
+            img     :"./icon/mijisou.png",
+        },
+        'seeres':{
+            id      :6,
+            title   :"seeres*",
+            url     :"https://seeres.com/search",
+            name    :"q",
+            img     :"./icon/seeres.png",
+        },
+    };
+
+    //默认搜索引擎
+    var se_default = Cookies.get('se_default');
+
+    //首页数据加载
+    homeData();
+
     //判断窗口大小，添加输入框自动完成
     var wid = $("body").width();
     if (wid < 640) {
@@ -78,57 +133,7 @@ $(document).ready(function() {
         //alert("默认搜索引擎已保存");
     });
 
-    //初始化
-    var se_list = {
-        'baidu':{
-            id      :1,
-            title   :"百度",
-            url     :"https://www.baidu.com/s",
-            name    :"wd",
-            img     :"./icon/baidu.ico",
-        },
-        'google':{
-            id      :2,
-            title   :"谷歌",
-            url     :"https://www.google.com/search",
-            name    :"q",
-            img     :"./icon/google_1.png",
-        },
-        'bing':{
-            id      :3,
-            title   :"必应",
-            url     :"https://cn.bing.com/search",
-            name    :"q",
-            img     :"./icon/bing.ico",
-        },
-        'dogedoge':{
-            id      :4,
-            title   :"多吉",
-            url     :"https://www.dogedoge.com/results",
-            name    :"q",
-            img     :"./icon/doge_ico.png",
-        },
-        'mijisou':{
-            id      :5,
-            title   :"秘迹",
-            url     :"https://mijisou.com",
-            name    :"q",
-            img     :"./icon/mijisou.png",
-        },
-        'seeres':{
-            id      :6,
-            title   :"seeres*",
-            url     :"https://seeres.com/search",
-            name    :"q",
-            img     :"./icon/seeres.png",
-        },
-    };
-
-    var se_default = Cookies.get('se_default');
     //首页数据加载
-    homeData();
-
-    //默认搜索引擎加载
     function homeData() {
         var defaultSe = se_list[se_default];
         $("#search").attr("action", defaultSe["url"]);
