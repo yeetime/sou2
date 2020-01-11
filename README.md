@@ -12,7 +12,7 @@ v2：使用 jQuery 和 cookie 简单实现了部分数据的动态加载（伪�
 
 ## 示例页面：
 
-+ [https://www.alone.run/](https://www.alone.run/)
++ [https://sou.alone.run/](https://sou.alone.run/)
 
 ## 组件：
 
