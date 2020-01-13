@@ -61,7 +61,7 @@ $(document).ready(function() {
     };
 
     //默认搜索引擎
-    var se_default = Cookies.get('se_default');
+    var se_default = Cookies.get('se_default')?Cookies.get('se_default'):"baidu";
 
     //首页数据加载
     homeData();
@@ -117,7 +117,7 @@ $(document).ready(function() {
         if($("#controll").is(":hidden")){
             setinit();
             $("#controll").show();
-            $("#controll")[0].style.height = 200+"px";
+            $("#controll")[0].style.height = 400+"px";
             $(".set").html("关闭");
         } else {
             $("#controll")[0].style.height = 0+"px";
@@ -144,26 +144,21 @@ $(document).ready(function() {
     function seList() {
         var html = "";
         for(var i in se_list){
-            html+="<li class='se-li' url='"+se_list[i]["url"]+"' name='"+se_list[i]["name"]+"' img='"+se_list[i]["img"]+"'><img src='"+se_list[i]["img"]+"'></img>"+se_list[i]["title"]+"</li>"
-
-            // if(i == se_default){
-            //     html+="<input type='radio' class='se_l' name='se_default' value='"+i+"' checked='checked'> "+ se_list[i]["title"];
-            // } else {
-            //     html+="<input type='radio' class='se_l' name='se_default' value='"+i+"'> "+ se_list[i]["title"];
-            // }
+            html+="<li class='se-li' url='"+se_list[i]["url"]+"' name='"+se_list[i]["name"]+"' img='"+se_list[i]["img"]+"'><img src='"+se_list[i]["img"]+"'></img>"+se_list[i]["title"]+"</li>";
         }
         $(".search-engine-list").html(html);
     }
     //设置内容加载
     function setinit () {
-        var html = "";
+        var html = "<ul>";
         for(var i in se_list){
             if(i == se_default){
-                html+="<input type='radio' class='se_l' name='se_default' value='"+i+"' checked='checked'> "+ se_list[i]["title"];
+                html+="<li><input type='radio' class='se_l' name='se_default' value='"+i+"' checked='checked'> "+ se_list[i]["title"] +"</li>";
             } else {
-                html+="<input type='radio' class='se_l' name='se_default' value='"+i+"'> "+ se_list[i]["title"];
+                html+="<li><input type='radio' class='se_l' name='se_default' value='"+i+"'> "+ se_list[i]["title"] +"</li>";
             }
         }
+        html+="</ul>"
         $(".se_list").html(html);
     }
 });

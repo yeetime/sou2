@@ -500,7 +500,7 @@ a {
 
 #controll {
     width: 95%;
-    font-size:12px;
+    font-size:16px;
     /*margin: 3 0px 0 0;*/
     padding:5px 5px 5px 5px;
     background: #F1F9F8;
@@ -510,9 +510,17 @@ a {
     transition: height 0.6s;
 }
 
-#controll .se_list input[name='se_default'] {
-    margin-left:18px;
-    margin-bottom:10px;
+#controll .module {
+    margin-left:10px;
+}
+
+#controll .se_list li {
+    float: left;
+    margin: 5px;
+    width: 80px;
+    height: 30px;
+    text-align: left;
+    line-height: 30px;
 }
 
 @media (max-width: 720px) {
