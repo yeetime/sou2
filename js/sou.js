@@ -65,6 +65,7 @@ $(document).ready(function() {
 
     //首页数据加载
     homeData();
+    set ();
 
     //判断窗口大小，添加输入框自动完成
     var wid = $("body").width();
@@ -113,18 +114,16 @@ $(document).ready(function() {
     });
 
     //设置展开动画
-    $(".set").click(function() {
+    function set () {
         if($("#controll").is(":hidden")){
             setinit();
             $("#controll").show();
             $("#controll")[0].style.height = 400+"px";
-            $(".set").html("关闭");
         } else {
             $("#controll")[0].style.height = 0+"px";
             $("#controll").hide();
-            $(".set").html("<i class='iconfont icon-kongzhi'></i> 设置");
         }
-    });
+    };
 
     //设置默认搜索引擎
     $(".se_list").on("click",".se_l",function(){
@@ -162,3 +161,10 @@ $(document).ready(function() {
         $(".se_list").html(html);
     }
 });
+
+$(function () {
+    $(".side").rTabs({
+        bind: 'click',
+        animation: 'left'
+    });
+})
