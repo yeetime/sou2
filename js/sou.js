@@ -105,11 +105,11 @@ $(document).ready(function() {
     //菜单点击
     $("#menu").click(function(event) {
         $(this).toggleClass('on');
-        $(".list").toggleClass('closed');
+        $(".side").toggleClass('closed');
     });
     $("#content").click(function(event) {
         $(".on").removeClass('on');
-        $(".list").addClass('closed');
+        $(".side").addClass('closed');
     });
 
     //设置展开动画
