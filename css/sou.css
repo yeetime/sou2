@@ -84,7 +84,7 @@ a {
     width: 480px;
     height: 120px;
     margin: 20px auto;
-    background: url(../icon/logo) no-repeat center/cover;
+    background: url(#) no-repeat center/cover;
 }
 
 .con .shlogo a {
@@ -170,32 +170,32 @@ a {
     color: #777;
 }
 
-.search-engine{
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  background: #FFF;
-  padding: 15px 0px 0px 0px;
-  border-radius: 5px;
-  box-shadow: 0px 5px 20px 0px #d8d7d7;
-  transition: all 0.3s;
-  display: none;
-  z-index: 999
+.search-engine {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #FFF;
+    padding: 15px 0px 0px 0px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 20px 0px #d8d7d7;
+    transition: all 0.3s;
+    display: none;
+    z-index: 999
 }
 
-.search-engine-head{
-  overflow: hidden;
-  text-indent: 20px;
-  margin-bottom: 10px;
-  padding-right: 15px;
+.search-engine-head {
+    overflow: hidden;
+    text-indent: 20px;
+    margin-bottom: 10px;
+    padding-right: 15px;
 }
 
-.search-engine-tit{
-  float: left;
-  margin: 0;
-  font-size: 14px;
-  color: #999;
+.search-engine-tit {
+    float: left;
+    margin: 0;
+    font-size: 14px;
+    color: #999;
 }
 
 .search-engine ul {
