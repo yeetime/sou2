@@ -60,11 +60,9 @@ $(document).ready(function() {
         },
     };
 
-    //默认搜索引擎
-    var se_default = Cookies.get('se_default')?Cookies.get('se_default'):"baidu";
-
     //首页数据加载
     homeData();
+    //设置内容加载
     setinit();
 
     //判断窗口大小，添加输入框自动完成
@@ -113,20 +111,33 @@ $(document).ready(function() {
         $(".side").addClass('closed');
     });
 
-    //设置默认搜索引擎
-    $(".se_list").on("click",".se_l",function(){
+    // 侧栏标签卡切换
+    $(".side").rTabs({
+        bind: 'click',
+        animation: 'left'
+    });
+
+    //修改默认搜索引擎
+    $(".se_list_table").on("click",".set_se_default",function(){
         var name = $(this).val();
         Cookies.set('se_default', name, { expires: 30 });
-        //alert("默认搜索引擎已保存");
+        setinit();
     });
+
+    //获得默认搜索引擎
+    function getSeDefault(){
+        return Cookies.get('se_default') ? Cookies.get('se_default') : "baidu";
+    }
 
     //首页数据加载
     function homeData() {
+        var se_default =getSeDefault();
         var defaultSe = se_list[se_default];
         $("#search").attr("action", defaultSe["url"]);
         $(".se").attr("src", defaultSe["img"]);
         $(".wd").attr("name", defaultSe["name"]);
     }
+
     //搜索引擎列表加载
     function seList() {
         var html = "";
@@ -135,24 +146,19 @@ $(document).ready(function() {
         }
         $(".search-engine-list").html(html);
     }
+
     //设置内容加载
     function setinit () {
-        var html = "<ul>";
+        var se_default =getSeDefault();
+        var html = "";
         for(var i in se_list){
+            var tr = "<tr><td></td>";
             if(i == se_default){
-                html+="<li><input type='radio' class='se_l' name='se_default' value='"+i+"' checked='checked'> "+ se_list[i]["title"] +"</li>";
-            } else {
-                html+="<li><input type='radio' class='se_l' name='se_default' value='"+i+"'> "+ se_list[i]["title"] +"</li>";
+                tr ="<tr><td><span class='iconfont iconhome'></span></td>";
             }
+            tr += "<td>"+ se_list[i]["title"] +"</td><td><button class='set_se_default' value='"+i+"'><span class='iconfont iconstrore-add'></span></button><button class='edit_se' value='"+i+"'><span class='iconfont iconbook-edit'></span></button> <button class='delete_se' value='"+i+"'><span class='iconfont icondelete'></span></button></td></tr>";
+            html+=tr;
         }
-        html+="</ul>"
-        $(".se_list").html(html);
+        $(".se_list_table").html(html);
     }
 });
-
-$(function () {
-    $(".side").rTabs({
-        bind: 'click',
-        animation: 'left'
-    });
-})

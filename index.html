@@ -17,6 +17,7 @@
     <script src="./js/js.cookie.js"></script>
     <script src="./js/sou.js"></script>
     <link rel="stylesheet" href="./font_1230786_swt4kkie8ym/iconfont.css">
+    <link rel="stylesheet" href="./font_1614281/iconfont.css">
     <script src="./font_1230786_swt4kkie8ym/iconfont.js"></script>
     <link rel="stylesheet" href="./css/sou.css">
 </head>
@@ -212,25 +213,33 @@
                             </div>
                             <div class="set_blocks_content">
                                 <div class="se_list">
-                                    <ul>
-                                        <li>
-                                            <input type="radio" name="se_default" value="baidu"> 百度
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="se_default" value="google"> 谷歌
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="se_default" value="bing"> 必应
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="se_add">
-                                    名字:<input type="text" name="name" placeholder="唯一标识,使用英文，如‘baidu’"><br>
-                                    标题:<input type="text" name="title" placeholder="显示名称"><br>
-                                    地址:<input type="text" name="title" placeholder="url"><br>
-                                    key:<input type="text" name="title" placeholder="key"><br>
-                                    图标:<input type="text" name="title" placeholder="图标"><br>
-                                    <button>保存</button>
+                                    <table class="se_list_table">
+                                        <tr>
+                                            <td><span class="iconfont iconhome"></span></td>
+                                            <td>百度</td>
+                                            <td>
+                                                <button class="set_se_default" value="baidu"><span class="iconfont iconstrore-add"></span></button>
+                                                &nbsp;
+                                                <button class="edit_se" value="baidu"><span class="iconfont iconbook-edit"></span></button>
+                                                &nbsp;
+                                                <button class="delete_se" value="baidu"><span class="iconfont icondelete"></span></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>谷歌</td>
+                                            <td>
+                                                <button class="set_se_default" value="google"><span class="iconfont iconstrore-add"></span></button>
+                                                &nbsp;
+                                                <button class="edit_se" value="google"><span class="iconfont iconbook-edit"></span></button>
+                                                &nbsp;
+                                                <button class="delete_se" value="google"><span class="iconfont icondelete"></span></button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="se_add_button">
+                                        <button><span class="iconfont iconplus "></span></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +248,16 @@
                                 设置2
                             </div>
                             <div class="set_blocks_content">
-                                content
+                                设置2
+                                <br>
+                                <div class="se_add">
+                                    名字:<input type="text" name="name" placeholder="唯一标识,使用英文，如‘baidu’"><br>
+                                    标题:<input type="text" name="title" placeholder="显示名称"><br>
+                                    地址:<input type="text" name="title" placeholder="url"><br>
+                                    key:<input type="text" name="title" placeholder="key"><br>
+                                    图标:<input type="text" name="title" placeholder="图标"><br>
+                                    <button>保存</button>
+                                </div>
                             </div>
                         </div>
 

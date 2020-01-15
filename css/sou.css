@@ -524,8 +524,50 @@ a {
     padding: 10px 15px;
 }
 
+.set_blocks_content .se_list table {
+    font-size: 14px;
+    text-align:right;
+    width:100%;
+    border-collapse:collapse;
+}
+
+.set_blocks_content .se_list table tr td:nth-child(2) {
+    text-align:left;
+}
+
+.set_blocks_content .se_list table tr td {
+    border-bottom:1px solid;
+    border-color: rgb(71, 144, 191);
+}
+
+.set_blocks_content .se_list button {
+    border:1px solid rgba(72, 91, 94, 0);
+    border-radius: 3px;
+}
+
+.set_blocks_content .se_list button:hover {
+    border:1px solid #485b5e;
+}
+
+.set_blocks_content .se_list button:active {
+    color: #fff;
+    background-color: #599cff;
+}
+
+.set_blocks_content .se_add_button {
+    text-align:center;
+}
+
+.set_blocks_content .se_list .se_add_button button {
+    width: 40%;
+    height: 25px;
+    border:1px solid #485b5e;
+    border-radius: 3px;
+    text-align:center;
+}
+
 .other {
-    background: rgb(0, 126, 125);
+    background: rgb(255, 250, 254);
 }
 
 @media (max-width: 720px) {

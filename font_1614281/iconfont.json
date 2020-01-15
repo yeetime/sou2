@@ -1,0 +1,79 @@
+{
+  "id": "1614281",
+  "name": "sou2",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "sou2 图标管理",
+  "glyphs": [
+    {
+      "icon_id": "1058864",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "12818648",
+      "name": "close",
+      "font_class": "close",
+      "unicode": "e7e3",
+      "unicode_decimal": 59363
+    },
+    {
+      "icon_id": "12818653",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e7e7",
+      "unicode_decimal": 59367
+    },
+    {
+      "icon_id": "12818654",
+      "name": "edit",
+      "font_class": "edit",
+      "unicode": "e7e4",
+      "unicode_decimal": 59364
+    },
+    {
+      "icon_id": "12818655",
+      "name": "delete",
+      "font_class": "delete",
+      "unicode": "e7e5",
+      "unicode_decimal": 59365
+    },
+    {
+      "icon_id": "12818659",
+      "name": "align-left",
+      "font_class": "align-left",
+      "unicode": "e7e8",
+      "unicode_decimal": 59368
+    },
+    {
+      "icon_id": "12818665",
+      "name": "plus",
+      "font_class": "plus",
+      "unicode": "e7e6",
+      "unicode_decimal": 59366
+    },
+    {
+      "icon_id": "12818673",
+      "name": "strore-add",
+      "font_class": "strore-add",
+      "unicode": "e7ea",
+      "unicode_decimal": 59370
+    },
+    {
+      "icon_id": "12818677",
+      "name": "set",
+      "font_class": "set",
+      "unicode": "e7e9",
+      "unicode_decimal": 59369
+    },
+    {
+      "icon_id": "12818679",
+      "name": "book-edit",
+      "font_class": "book-edit",
+      "unicode": "e7eb",
+      "unicode_decimal": 59371
+    }
+  ]
+}
