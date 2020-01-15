@@ -65,7 +65,7 @@ $(document).ready(function() {
 
     //首页数据加载
     homeData();
-    set ();
+    setinit();
 
     //判断窗口大小，添加输入框自动完成
     var wid = $("body").width();
@@ -112,18 +112,6 @@ $(document).ready(function() {
         $(".on").removeClass('on');
         $(".side").addClass('closed');
     });
-
-    //设置展开动画
-    function set () {
-        if($("#controll").is(":hidden")){
-            setinit();
-            $("#controll").show();
-            $("#controll")[0].style.height = 400+"px";
-        } else {
-            $("#controll")[0].style.height = 0+"px";
-            $("#controll").hide();
-        }
-    };
 
     //设置默认搜索引擎
     $(".se_list").on("click",".se_l",function(){

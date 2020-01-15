@@ -383,8 +383,8 @@ a {
 }
 
 .side {
-    width: 345px;
-    padding: 0 10px;
+    width: 337px;
+    padding: 0 20px;
     height: 100%;
     overflow: hidden;
     overflow-y: auto;
@@ -422,20 +422,21 @@ a {
 
 .tab-con {
     position: relative;
-    width: 100%;
+    width: 330px;
     height: 100%;
     overflow: hidden;
 }
-
+x
 .tab-con-item {
+    width: 330px;
     display: none;
 }
 
 .list ul {
-    width: 330px;
     float: left;
-    padding: 0 0 20px;
+    background: #2a4869;
     margin-bottom: 20px;
+
 }
 
 .list ul li {
@@ -500,36 +501,16 @@ a {
     font-weight: normal;
 }
 
-.set ul {
-    width: 330px;
-    float: left;
+.set {
     padding: 0 0 20px;
-    margin-bottom: 20px;
 }
 
-#controll {
-    width: 95%;
-    font-size:16px;
-    /*margin: 3 0px 0 0;*/
-    padding:5px 5px 5px 5px;
-    background: #F1F9F8;
-    border-radius:10px;
-    position: relative;
-    overflow: hidden;
-    transition: height 0.6s;
+.set_blocks {
+    background: rgb(173, 168, 117);
 }
 
-#controll .module {
-    margin-left:10px;
-}
-
-#controll .se_list li {
-    float: left;
-    margin: 5px;
-    width: 80px;
-    height: 30px;
-    text-align: left;
-    line-height: 30px;
+.other {
+    background: rgb(0, 126, 125);
 }
 
 @media (max-width: 720px) {
@@ -551,10 +532,10 @@ a {
     #menu.on {
         right: 270px;
     }
-    .list {
+    .side {
         width: 227px;
     }
-    .list ul {
+    .side ul {
         width: 220px;
     }
     .con .sou ul li {
@@ -567,17 +548,6 @@ a {
     .home,
     #menu {
         top: 5px;
-    }
-    .mywth {
-        color: #777;
-        left: 10px;
-        top: 20px;
-    }
-    .mywth .wea_hover {
-        display: none;
-    }
-    .mywth.hidden {
-        display: none;
     }
 }
 
