@@ -406,7 +406,7 @@ a {
 .tab-nav a {
     display: block;
     float: left;
-    width: 80px;
+    width: 60px;
     height: 30px;
     line-height: 30px;
     text-align: center;
@@ -434,7 +434,6 @@ a {
 
 .list ul {
     float: left;
-    background: #2a4869;
     margin-bottom: 20px;
 
 }
@@ -502,11 +501,27 @@ a {
 }
 
 .set {
-    padding: 0 0 20px;
+
 }
 
 .set_blocks {
-    background: rgb(173, 168, 117);
+    background: rgb(221, 221, 221);
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.set_blocks_title {
+    font-size: 14px;
+    background-color: rgb(65, 110, 152);
+    color: #fff;
+    padding: 10px 15px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.set_blocks_content {
+    font-size: 14px;
+    padding: 10px 15px;
 }
 
 .other {
