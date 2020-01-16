@@ -34,9 +34,9 @@ html {
     color: #000;
 }
 
-form,
-input,
-button {
+#search,
+.wd,
+.s {
     padding: 0;
     margin: 0;
     border: none;
@@ -44,7 +44,7 @@ button {
     background: none;
 }
 
-input::-webkit-input-placeholder {
+.wd::-webkit-input-placeholder {
     color: #ccc;
     letter-spacing: 2px;
     font-size: 16px;
@@ -120,7 +120,6 @@ a {
     width: 40px;
     height: 40px;
     display: block;
-    border-radius: 25px;
     position: absolute;
     z-index: 10;
     left: 6px;
@@ -541,6 +540,7 @@ a {
 }
 
 .set_blocks_content .se_list button {
+    background: none;
     border:1px solid rgba(72, 91, 94, 0);
     border-radius: 3px;
 }
@@ -555,15 +555,22 @@ a {
 }
 
 .set_blocks_content .se_add_button {
+    margin-top: 10px;
     text-align:center;
 }
 
-.set_blocks_content .se_list .se_add_button button {
+.set_blocks_content .se_add_button button {
     width: 40%;
-    height: 25px;
+    height: 20px;
     border:1px solid #485b5e;
     border-radius: 3px;
     text-align:center;
+    background: none;
+}
+
+.set_blocks_content .se_add_button button:active {
+    color: #fff;
+    background-color: #599cff;
 }
 
 .other {
