@@ -78,7 +78,7 @@ $(document).ready(function() {
         var con = $(".search-engine");
         var img = $(".se");
 
-        if($(".search-engine").is(":hidden") && img.is(e.target)){
+        if(con.is(":hidden") && img.is(e.target)){
             if (img.is(e.target)) {
                 seList();
                 $(".search-engine").show();
@@ -195,5 +195,12 @@ $(document).ready(function() {
         $(".se_add_content input[name='url']").val(se_list[key]["url"]);
         $(".se_add_content input[name='name']").val(se_list[key]["name"]);
         $(".se_add_content input[name='img']").val(se_list[key]["img"]);
+    });
+
+    //删除搜索引擎
+    $(".se_list").on("click",".delete_se",function(){
+        var key = $(this).val();
+        delete se_list[key];
+        setinit();
     });
 });
