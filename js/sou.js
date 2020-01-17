@@ -161,4 +161,39 @@ $(document).ready(function() {
         }
         $(".se_list_table").html(html);
     }
+
+    //搜索引擎添加
+    $(".se_add_button button").click(function () {
+        $(".se_add_content input").val("");
+    });
+
+    //搜索引擎保存
+    $(".se_add_save").click(function () {
+        var key = $(".se_add_content input[name='key']").val();
+        var title = $(".se_add_content input[name='title']").val();
+        var url = $(".se_add_content input[name='url']").val();
+        var name = $(".se_add_content input[name='name']").val();
+        var img = $(".se_add_content input[name='img']").val();
+
+        //$(".se_add_content input").val("");
+
+        se_list[key] = {
+            title: title,
+            url: url,
+            name: name,
+            img: img,
+        };
+
+        setinit();
+    });
+
+    //搜索引擎详情
+    $(".se_list").on("click",".edit_se",function(){
+        var key = $(this).val();
+        $(".se_add_content input[name='key']").val(key);
+        $(".se_add_content input[name='title']").val(se_list[key]["title"]);
+        $(".se_add_content input[name='url']").val(se_list[key]["url"]);
+        $(".se_add_content input[name='name']").val(se_list[key]["name"]);
+        $(".se_add_content input[name='img']").val(se_list[key]["img"]);
+    });
 });

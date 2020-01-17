@@ -573,6 +573,17 @@ a {
     background-color: #599cff;
 }
 
+.se_add_content {
+    border:1px solid #599cff;
+    border-radius: 3px;
+    margin-top: 10px;
+    padding: 8px 12px;
+}
+
+.se_add_content input {
+
+}
+
 .other {
     background: rgb(255, 250, 254);
 }
