@@ -13,43 +13,43 @@ github：https://github.com/yeetime/sou2
 $(document).ready(function() {
 
     //搜索引擎列表【预设】
-    var se_list = {
-        'baidu':{
+    var se_list_preinstall = {
+        '1':{
             id      :1,
             title   :"百度",
             url     :"https://www.baidu.com/s",
             name    :"wd",
             img     :"./icon/baidu.ico",
         },
-        'google':{
+        '2':{
             id      :2,
             title   :"谷歌",
             url     :"https://www.google.com/search",
             name    :"q",
             img     :"./icon/google_1.png",
         },
-        'bing':{
+        '3':{
             id      :3,
             title   :"必应",
             url     :"https://cn.bing.com/search",
             name    :"q",
             img     :"./icon/bing.ico",
         },
-        'dogedoge':{
+        '4':{
             id      :4,
             title   :"多吉",
             url     :"https://www.dogedoge.com/results",
             name    :"q",
             img     :"./icon/doge_ico.png",
         },
-        'mijisou':{
+        '5':{
             id      :5,
             title   :"秘迹",
             url     :"https://mijisou.com",
             name    :"q",
             img     :"./icon/mijisou.png",
         },
-        'seeres':{
+        '6':{
             id      :6,
             title   :"seeres*",
             url     :"https://seeres.com/search",
@@ -58,7 +58,7 @@ $(document).ready(function() {
         },
     };
 
-    //首页数据加载
+    //搜索框数据加载
     homeData();
 
     //判断窗口大小，添加输入框自动完成
@@ -78,8 +78,8 @@ $(document).ready(function() {
         if (se_list_local !== "{}") {
             return JSON.parse(se_list_local);
         } else {
-            setSeList (se_list);
-            return se_list;
+            setSeList (se_list_preinstall);
+            return se_list_preinstall;
         }
     }
 
@@ -88,7 +88,7 @@ $(document).ready(function() {
         Cookies.set('se_list', se_list, { expires: 36500 });
     }
 
-    //选择搜索引擎
+    //选择搜索引擎点击事件
     $(document).on('click',function(e){
         var con = $(".search-engine");
         var img = $(".se");
@@ -141,17 +141,20 @@ $(document).ready(function() {
 
     //获得默认搜索引擎
     function getSeDefault(){
-        return Cookies.get('se_default') ? Cookies.get('se_default') : "baidu";
+        return Cookies.get('se_default');
     }
 
-    //首页数据加载
+    //搜索框数据加载
     function homeData() {
         var se_default =getSeDefault();
         var se_list = getSeList();
         var defaultSe = se_list[se_default];
-        $("#search").attr("action", defaultSe["url"]);
-        $(".se").attr("src", defaultSe["img"]);
-        $(".wd").attr("name", defaultSe["name"]);
+        if (defaultSe){
+            $("#search").attr("action", defaultSe["url"]);
+            $(".se").attr("src", defaultSe["img"]);
+            $(".wd").attr("name", defaultSe["name"]);
+        }
+
     }
 
     //搜索引擎列表加载
@@ -174,7 +177,7 @@ $(document).ready(function() {
             if(i == se_default){
                 tr ="<tr><td><span class='iconfont iconhome'></span></td>";
             }
-            tr += "<td>"+ se_list[i]["title"] +"</td><td><button class='set_se_default' value='"+i+"'><span class='iconfont iconstrore-add'></span></button><button class='edit_se' value='"+i+"'><span class='iconfont iconbook-edit'></span></button> <button class='delete_se' value='"+i+"'><span class='iconfont icondelete'></span></button></td></tr>";
+            tr += "<td>"+i+". "+ se_list[i]["title"] +"</td><td><button class='set_se_default' value='"+i+"'><span class='iconfont iconstrore-add'></span></button><button class='edit_se' value='"+i+"'><span class='iconfont iconbook-edit'></span></button> <button class='delete_se' value='"+i+"'><span class='iconfont icondelete'></span></button></td></tr>";
             html+=tr;
         }
         $(".se_list_table").html(html);
@@ -196,14 +199,29 @@ $(document).ready(function() {
         //$(".se_add_content input").val("");
 
         var se_list = getSeList();
-        se_list[key] = {
-            title: title,
-            url: url,
-            name: name,
-            img: img,
+        if (se_list[key]) {
+            var r=confirm("顺序:"+key+" 已有数据，点击“确定”覆盖原有数据");
+            if (r) {
+                se_list[key] = {
+                    title: title,
+                    url: url,
+                    name: name,
+                    img: img,
+                };
+                setSeList(se_list);
+                setinit();
+            }
+        } else {
+            se_list[key] = {
+                title: title,
+                url: url,
+                name: name,
+                img: img,
+            };
+            setSeList (se_list);
+            setinit();
         };
-        setSeList (se_list);
-        setinit();
+
     });
 
     //搜索引擎详情
@@ -220,10 +238,25 @@ $(document).ready(function() {
 
     //删除搜索引擎
     $(".se_list").on("click",".delete_se",function(){
-        var se_list = getSeList();
+        var se_default = getSeDefault();
         var key = $(this).val();
-        delete se_list[key];
-        setSeList (se_list);
-        setinit();
+        if (key==se_default){
+            alert("默认搜索引擎不可删除！");
+        } else {
+            var se_list = getSeList();
+            delete se_list[key];
+            setSeList (se_list);
+            setinit();
+        }
+    });
+
+    //恢复预设搜索引擎
+    $(".set_se_list_preinstall").click(function () {
+         var r=confirm("现有设置和数据将被清空！");
+         if (r) {
+             setSeList (se_list_preinstall);
+             Cookies.set('se_default', 1, { expires: 36500 });
+             setinit();
+         }
     });
 });
