@@ -75,7 +75,6 @@ $(document).ready(function() {
     //获取搜索引擎列表
     function getSeList() {
         var se_list_local = Cookies.get('se_list');
-        alert(se_list_local);
         if (se_list_local !== "{}"&&se_list_local) {
             return JSON.parse(se_list_local);
         } else {
@@ -142,7 +141,8 @@ $(document).ready(function() {
 
     //获得默认搜索引擎
     function getSeDefault(){
-        return Cookies.get('se_default');
+        var se_default = Cookies.get('se_default');
+        return se_default?se_default:1;
     }
 
     //搜索框数据加载
