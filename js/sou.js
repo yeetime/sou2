@@ -75,7 +75,7 @@ $(document).ready(function() {
     //获取搜索引擎列表
     function getSeList() {
         var se_list_local = Cookies.get('se_list');
-        if (se_list_local !== "{}") {
+        if (se_list_local !== "{}"||se_list_local) {
             return JSON.parse(se_list_local);
         } else {
             setSeList (se_list_preinstall);
