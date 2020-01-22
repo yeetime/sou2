@@ -239,19 +239,35 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="se_add_button">
-                                    <button><span class="iconfont iconplus"></span></button>
+                                <div class="se_add_preinstall">
+                                    <button class="set_se_list_add"><span class="icon iconfont icontianjia"></span>新增</button>
+                                    <button class="set_se_list_preinstall"><span class="icon iconfont iconjinggao"></span>重置</button>
                                 </div>
-                                <div>
-                                    <button class="set_se_list_preinstall">预设</button>
-                                </div>
-                                <div class="se_add_content">
-                                    顺序:<input type="text" name="key" placeholder="唯一标识,使用英文，如‘baidu’"><br>
-                                    名称:<input type="text" name="title" placeholder="显示名称"><br>
-                                    网址:<input type="text" name="url" placeholder="url"><br>
-                                    搜索字段名:<input type="text" name="name" placeholder="sou"><br>
-                                    图标:<input type="text" name="img" placeholder="图标"><br>
-                                    <button class="se_add_save">保存</button>
+                                <div class="se_add_content" style="display:none;">
+                                    <div class="from_items">
+                                        <p><b>顺序:</b></p>
+                                        <input type="number" name="key" placeholder="填入正整数">
+                                    </div>
+                                    <div class="from_items">
+                                        <p><b>名称:</b></p>
+                                        <input type="text" name="title" placeholder="网站名称">
+                                    </div>
+                                    <div class="from_items">
+                                        <p><b>网址:</b></p>
+                                        <input type="url" name="url" placeholder="以“https:”或“http:”开头的URL">
+                                    </div>
+                                    <div class="from_items">
+                                        <p><b>搜索字段名:</b></p>
+                                        <input type="text" name="name" placeholder="URL中“?”后的字段">
+                                    </div>
+                                    <div class="from_items">
+                                        <p><b>图标:</b></p>
+                                        <input type="text" name="img" placeholder="图片地址">
+                                    </div>
+                                    <div class="from_items button">
+                                        <button class="se_add_save">保存</button>
+                                        <button class="se_add_cancel">取消</button>
+                                    </div>
                                 </div>
 
                             </div>

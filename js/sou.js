@@ -185,8 +185,9 @@ $(document).ready(function() {
     }
 
     //搜索引擎添加
-    $(".se_add_button button").click(function () {
+    $(".set_se_list_add").click(function () {
         $(".se_add_content input").val("");
+        $(".se_add_content").show();
     });
 
     //搜索引擎保存
@@ -196,8 +197,6 @@ $(document).ready(function() {
         var url = $(".se_add_content input[name='url']").val();
         var name = $(".se_add_content input[name='name']").val();
         var img = $(".se_add_content input[name='img']").val();
-
-        //$(".se_add_content input").val("");
 
         var se_list = getSeList();
         if (se_list[key]) {
@@ -223,6 +222,13 @@ $(document).ready(function() {
             setinit();
         };
 
+        $(".se_add_content").hide();
+
+    });
+
+    //关闭表单
+    $(".se_add_cancel").click(function () {
+        $(".se_add_content").hide();
     });
 
     //搜索引擎详情
@@ -235,6 +241,8 @@ $(document).ready(function() {
         $(".se_add_content input[name='url']").val(se_list[key]["url"]);
         $(".se_add_content input[name='name']").val(se_list[key]["name"]);
         $(".se_add_content input[name='img']").val(se_list[key]["img"]);
+
+        $(".se_add_content").show();
     });
 
     //删除搜索引擎
@@ -244,10 +252,14 @@ $(document).ready(function() {
         if (key==se_default){
             alert("默认搜索引擎不可删除！");
         } else {
-            var se_list = getSeList();
-            delete se_list[key];
-            setSeList (se_list);
-            setinit();
+            var r = confirm("顺序 "+key+" 是否删除！");
+            if (r) {
+                var se_list = getSeList();
+                delete se_list[key];
+                setSeList(se_list);
+                setinit();
+            }
+
         }
     });
 

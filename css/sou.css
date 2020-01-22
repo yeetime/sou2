@@ -554,12 +554,12 @@ a {
     background-color: #599cff;
 }
 
-.set_blocks_content .se_add_button {
+.set_blocks_content .se_add_preinstall {
     margin-top: 10px;
     text-align:center;
 }
 
-.set_blocks_content .se_add_button button {
+.set_blocks_content .se_add_preinstall button {
     width: 40%;
     height: 20px;
     border:1px solid #485b5e;
@@ -568,7 +568,7 @@ a {
     background: none;
 }
 
-.set_blocks_content .se_add_button button:active {
+.set_blocks_content .se_add_preinstall button:active {
     color: #fff;
     background-color: #599cff;
 }
@@ -580,8 +580,37 @@ a {
     padding: 8px 12px;
 }
 
-.se_add_content input {
+.se_add_content .from_items {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
+.se_add_content input {
+    width: 100%;
+}
+
+.se_add_content .button {
+    text-align:center;
+}
+
+.se_add_content button {
+    width: 30%;
+    height: 20px;
+    border:1px solid #485b5e;
+    border-radius: 3px;
+    text-align:center;
+    background: none;
+    margin:0px 10px;
+}
+
+.se_add_content .se_add_save:active {
+    color: #fff;
+    background-color: #21ff2c;
+}
+
+.se_add_content .se_add_cancel:active {
+    color: #fff;
+    background-color: #599cff;
 }
 
 .other {

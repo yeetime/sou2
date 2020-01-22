@@ -13,6 +13,20 @@
       "unicode_decimal": 58880
     },
     {
+      "icon_id": "1618316",
+      "name": "警告",
+      "font_class": "jinggao",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "5831309",
+      "name": "添加",
+      "font_class": "tianjia",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
       "icon_id": "12818648",
       "name": "close",
       "font_class": "close",
