@@ -204,52 +204,57 @@ a {
     justify-content: left;
 }
 
-.search-engine ul::before{
-  content: '';
-  width: 0px;
-  height: 0px;
-  position: absolute;
-  top: -15px;
-  left: 20px;
-  border-top: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid #fff;
-  border-left: 8px solid transparent;
+.search-engine ul::before {
+    content: '';
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    border-top: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+    border-left: 8px solid transparent;
 
 }
 
-.search-engine-list::after{
-  content: '';
-  width: 70px;
-  height: 18px;
-  position: absolute;
-  top: -17px;
-  left: 1px;
+.search-engine-list::after {
+    content: '';
+    width: 70px;
+    height: 18px;
+    position: absolute;
+    top: -17px;
+    left: 1px;
 }
-.search-engine-list li{
-  float: left;
-  width: 80px;
-  height: 30px;
-  line-height: 30px;
-  text-align: left;
-  font-size: 14px;
-  left:15px;
-  padding: 5px 10px 5px 10px;
-  margin: 0 10px 10px 0;
-  background: #f9f9f9;
-  color: #999;
-  cursor: pointer;
-  list-style: none;
-  position: relative;
-  border-radius: 10px;
+
+.search-engine-list li {
+    float: left;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    font-size: 14px;
+    left: 15px;
+    padding: 5px 10px 5px 10px;
+    margin: 0 10px 10px 0;
+    background: #f9f9f9;
+    color: #999;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    border-radius: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
-.search-engine-list li img{
-  width: 25px;
-  height: 25px;
-  border-radius: 15px;
-  float: left;
-  margin-right: 5px;
-  margin-top: 2.5px;
+
+.search-engine-list li img {
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
+    float: left;
+    margin-right: 5px;
+    margin-top: 2.5px;
 }
 
 .quick-div {
@@ -273,9 +278,12 @@ a {
     line-height: 40px;
     text-align: left;
     text-indent: 40px;
+    text-overflow:ellipsis;
     cursor: pointer;
     position: relative;
     border-radius: 10px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .quick:active {

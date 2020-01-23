@@ -59,9 +59,44 @@ $(document).ready(function() {
     };
 
     //主页快捷方式
+    var quick_list_preinstall = {
+        '1':{
+            title   :"哔哩哔哩",
+            url     :"https://www.bilibili.com/",
+            img     :"./icon/bilibili.png",
+            explain :"哔哩哔哩 (゜-゜)つロ 干杯~",
+        },
+        '2':{
+            title   :"GitHub",
+            url     :"https://github.com/",
+            img     :"./icon/github.ico",
+            explain :"GitHub",
+        },
+        '3':{
+            title   :"V2EX",
+            url     :"https://www.v2ex.com/",
+            img     :"./icon/v2ex.png",
+            explain :"V2EX",
+        },
+        '4':{
+            title   :"Steam",
+            url     :"https://store.steampowered.com/",
+            img     :"./icon/steam.ico",
+            explain :"Steam",
+        },
+        '5':{
+            title   :"scp基金会",
+            url     :"http://scp-wiki-cn.wikidot.com/",
+            img     :"./icon/scp.png",
+            explain :"控制，收容，保护",
+        },
+    };
 
     //搜索框数据加载
-    homeData();
+    searchData();
+
+    //快捷方式数据加载
+    quickData();
 
     //判断窗口大小，添加输入框自动完成
     var wid = $("body").width();
@@ -72,7 +107,9 @@ $(document).ready(function() {
     }
 
     //设置内容加载
-    setinit();
+    setSeInit();
+    setQuickInit();
+
 
     //获取搜索引擎列表
     function getSeList() {
@@ -138,7 +175,7 @@ $(document).ready(function() {
     $(".se_list_table").on("click",".set_se_default",function(){
         var name = $(this).val();
         Cookies.set('se_default', name, { expires: 36500 });
-        setinit();
+        setSeInit();
     });
 
     //获得默认搜索引擎
@@ -148,7 +185,7 @@ $(document).ready(function() {
     }
 
     //搜索框数据加载
-    function homeData() {
+    function searchData() {
         var se_default =getSeDefault();
         var se_list = getSeList();
         var defaultSe = se_list[se_default];
@@ -171,7 +208,7 @@ $(document).ready(function() {
     }
 
     //设置内容加载
-    function setinit () {
+    function setSeInit () {
         var se_default = getSeDefault();
         var se_list  = getSeList();
         var html = "";
@@ -225,7 +262,7 @@ $(document).ready(function() {
             img: img,
         };
         setSeList(se_list);
-        setinit();
+        setSeInit();
         $(".se_add_content").hide();
 
     });
@@ -262,9 +299,8 @@ $(document).ready(function() {
                 var se_list = getSeList();
                 delete se_list[key];
                 setSeList(se_list);
-                setinit();
+                setSeInit();
             }
-
         }
     });
 
@@ -274,7 +310,43 @@ $(document).ready(function() {
          if (r) {
              setSeList (se_list_preinstall);
              Cookies.set('se_default', 1, { expires: 36500 });
-             setinit();
+             setSeInit();
          }
     });
+
+    //获取快捷方式列表
+    function getQuickList() {
+        var quick_list_local = Cookies.get('quick_list');
+        if (quick_list_local !== "{}" && quick_list_local) {
+            return JSON.parse(quick_list_local);
+        } else {
+            setQuickList(quick_list_preinstall);
+            return quick_list_preinstall;
+        }
+    }
+
+    //设置快捷方式列表
+    function setQuickList(quick_list) {
+        Cookies.set('quick_list', quick_list, {expires: 36500});
+    }
+
+    //快捷方式数据加载
+    function quickData() {
+        var html = "";
+        var quick_list = getQuickList();
+        for (var i in quick_list) {
+            html += "<li class='quick' target='_blank' title='"+quick_list[i]['explain']+"'>\
+                        <a href='"+quick_list[i]['url']+"'>\
+                            <i style='background-image: url("+quick_list[i]['img']+");'></i>\
+                            "+quick_list[i]['title']+"\
+                        </a>\
+                     </li>";
+        }
+        $(".quick-ul").html(html);
+    }
+
+    //设置-快捷方式加载
+    function setQuickInit () {
+        alert("设置-快捷方式加载");
+    }
 });
