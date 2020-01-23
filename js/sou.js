@@ -58,6 +58,8 @@ $(document).ready(function() {
         },
     };
 
+    //主页快捷方式
+
     //搜索框数据加载
     homeData();
 
@@ -192,36 +194,38 @@ $(document).ready(function() {
 
     //搜索引擎保存
     $(".se_add_save").click(function () {
+        var key_inhere = $(".se_add_content input[name='key_inhere']").val();
         var key = $(".se_add_content input[name='key']").val();
         var title = $(".se_add_content input[name='title']").val();
         var url = $(".se_add_content input[name='url']").val();
         var name = $(".se_add_content input[name='name']").val();
         var img = $(".se_add_content input[name='img']").val();
 
-        var se_list = getSeList();
-        if (se_list[key]) {
-            var r=confirm("顺序:"+key+" 已有数据，点击“确定”覆盖原有数据");
-            if (r) {
-                se_list[key] = {
-                    title: title,
-                    url: url,
-                    name: name,
-                    img: img,
-                };
-                setSeList(se_list);
-                setinit();
-            }
-        } else {
-            se_list[key] = {
-                title: title,
-                url: url,
-                name: name,
-                img: img,
-            };
-            setSeList (se_list);
-            setinit();
-        };
+        var num = /^\+?[1-9][0-9]*$/;
+        if (!num.test(key)){
+            alert("顺序："+key+" 不是正数数！");
+            return;
+        }
 
+        var se_list = getSeList();
+
+        if (se_list[key]) {
+            alert("顺序:"+key+" 已有数据，不可用");
+            return;
+        }
+
+        if (key_inhere&&key!=key_inhere) {
+            delete se_list[key_inhere];
+        }
+
+        se_list[key] = {
+            title: title,
+            url: url,
+            name: name,
+            img: img,
+        };
+        setSeList(se_list);
+        setinit();
         $(".se_add_content").hide();
 
     });
@@ -236,6 +240,7 @@ $(document).ready(function() {
 
         var se_list = getSeList();
         var key = $(this).val();
+        $(".se_add_content input[name='key_inhere']").val(key);
         $(".se_add_content input[name='key']").val(key);
         $(".se_add_content input[name='title']").val(se_list[key]["title"]);
         $(".se_add_content input[name='url']").val(se_list[key]["url"]);
