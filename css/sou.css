@@ -390,11 +390,9 @@ a {
 }
 
 .side {
-    width: 337px;
-    padding: 0 20px;
+    width: 357px;
+    padding-left: 20px;
     height: 100%;
-    overflow: hidden;
-    overflow-y: auto;
     position: absolute;
     right: 0px;
     z-index: 2000;
@@ -408,6 +406,7 @@ a {
 
 .tab-nav {
     overflow: hidden;
+    height: 5%;
 }
 
 .tab-nav a {
@@ -429,17 +428,25 @@ a {
 
 .tab-con {
     position: relative;
-    width: 330px;
-    height: 100%;
+    width: 350px;
+    height: 95%;
     overflow: hidden;
 }
 
+.j-tab-con {
+    height: 100%;
+}
+
 .tab-con-item {
-    width: 330px;
+    height: 100%;
+    width: 350px;
     display: none;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .list ul {
+    height: 100%;
     float: left;
     margin-bottom: 20px;
 
