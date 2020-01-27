@@ -149,7 +149,7 @@ $(document).ready(function() {
         var url = $(this).attr('url');
         var name = $(this).attr('name');
         var img = $(this).attr('img');
-        $("#search").attr("action",url);
+        $(".search").attr("action",url);
         $(".wd").attr("name",name);
         $(".se").attr("src",img);
         $(".search-engine").hide();
@@ -347,6 +347,6 @@ $(document).ready(function() {
 
     //设置-快捷方式加载
     function setQuickInit () {
-        alert("设置-快捷方式加载");
+        // alert("设置-快捷方式加载");
     }
 });
