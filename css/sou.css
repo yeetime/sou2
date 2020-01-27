@@ -391,7 +391,7 @@ a {
 
 .side {
     width: 357px;
-    padding-left: 20px;
+    padding:10px 10px;
     height: 100%;
     position: absolute;
     right: 0px;
@@ -428,7 +428,7 @@ a {
 
 .tab-con {
     position: relative;
-    width: 350px;
+    width: 357px;
     height: 95%;
     overflow: hidden;
 }
@@ -439,7 +439,7 @@ a {
 
 .tab-con-item {
     height: 100%;
-    width: 350px;
+    width: 357px;
     display: none;
     overflow: hidden;
     overflow-y: auto;
@@ -652,6 +652,12 @@ a {
         right: 270px;
     }
     .side {
+        width: 227px;
+    }
+    .tab-con {
+        width: 227px;
+    }
+    .tab-con-item {
         width: 227px;
     }
     .side ul {
