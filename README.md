@@ -7,7 +7,7 @@ v2：侧栏结构修改，使用 jQuery 和 cookie 简单实现了部分数据�
 
 ###  GIF
 
-![自由导航](https://github.com/yeetime/sou2/blob/master/sou2.gif)
+![自由导航](https://github.com/yeetime/sou2/blob/master/sou2-2.gif)
 > （图片效果，以实际页面为准）
 
 ## 示例页面：
