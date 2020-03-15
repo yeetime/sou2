@@ -14,7 +14,6 @@ v2：侧栏结构修改，使用 jQuery 和 cookie 简单实现了部分数据�
 
 + [https://sou.alone.run/](https://sou.alone.run/)
 
-## 组件：
 
 ### 图标：
 图标调用了阿里的图标 [https://www.iconfont.cn/](https://www.iconfont.cn/)

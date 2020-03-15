@@ -347,7 +347,6 @@ $(document).ready(function() {
 
     //设置-快捷方式加载
     function setQuickInit () {
-        alert("设置-快捷方式加载");
 
         var quick_list  = getQuickList();
         var html = "";
