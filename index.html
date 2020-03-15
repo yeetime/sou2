@@ -24,7 +24,9 @@
 </head>
 <body>
 
+    <!-- 侧栏 -->
     <div id="menu"><i></i></div>
+
     <div class="side closed">
 
         <div class="tab-nav j-tab-nav">
@@ -40,11 +42,11 @@
         <div class="tab-con">
 
             <div class="j-tab-con">
-
+                <!--书签-->
                 <div class="tab-con-item" style="display:block;">
 
                     <div class="list">
-                            <ul>
+                        <ul>
                                 <!------>
                                 <li class="title"><i class="iconfont icon-youxiang"></i> 邮箱</li>
                                 <li><a rel="nofollow" href="https://mail.google.com/mail/u/0/#inbox" target="_blank"><i
@@ -200,14 +202,15 @@
                                 <li><a rel="nofollow" href="https://www.swiper.com.cn/" target="_blank"><i
                                         class="iconfont icon-S" style="color:#065fe3;"></i>Swiper</a></li>
                             </ul>
-                        </div>
+                    </div>
 
                 </div>
-
+                <!--书签 end-->
+                <!--设置-->
                 <div class="tab-con-item">
 
                     <div class="set">
-
+                        <!--搜索引擎设置-->
                         <div class="set_blocks">
                             <div class="set_blocks_title">
                                 搜索引擎
@@ -243,7 +246,7 @@
                                     <button class="set_se_list_add"><span class="icon iconfont icontianjia"></span>新增</button>
                                     <button class="set_se_list_preinstall"><span class="icon iconfont iconjinggao"></span>重置</button>
                                 </div>
-                                <div class="se_add_content" style="display:none;">
+                                <div class="add_content se_add_content" style="display:none;">
                                     <div class="from_items">
                                         <p><b>顺序:</b></p>
                                         <input type="hidden" name="key_inhere">
@@ -272,39 +275,93 @@
                                 </div>
                             </div>
                         </div>
+                        <!--搜索引擎设置 end-->
+                        <!--快捷方式设置-->
                         <div class="set_blocks">
                             <div class="set_blocks_title">
                                 快捷方式
                             </div>
                             <div class="set_blocks_content">
                                 <div class="quick_list">
-                                    哔哩哔哩、github、
+                                    <table class="quick_list_table">
+                                        <tr>
+                                            <td>1.&nbsp;</td>
+                                            <td>哔哩哔哩</td>
+                                            <td>
+                                                <button class="edit_quick" value="1"><span class="iconfont iconbook-edit"></span></button>
+                                                &nbsp;
+                                                <button class="delete_quick" value="1"><span class="iconfont icondelete"></span></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2.&nbsp;</td>
+                                            <td>知乎</td>
+                                            <td>
+                                                <button class="edit_quick" value="2"><span class="iconfont iconbook-edit"></span></button>
+                                                &nbsp;
+                                                <button class="delete_quick" value="2"><span class="iconfont icondelete"></span></button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="se_add_preinstall">
+                                    <button class="set_quick_list_add"><span class="icon iconfont icontianjia"></span>新增</button>
+                                    <button class="set_quick_list_preinstall"><span class="icon iconfont iconjinggao"></span>重置</button>
+                                </div>
+                                <div class="add_content quick_add_content" style="display:none;">
+                                    <div class="from_items">
+                                        <p><b>顺序:</b></p>
+                                        <input type="hidden" name="key_inhere">
+                                        <input type="number" name="key" placeholder="填入正整数">
+                                    </div>
+                                    <div class="from_items">
+                                        <p><b>名称:</b></p>
+                                        <input type="text" name="title" placeholder="网站名称">
+                                    </div>
+                                    <div class="from_items">
+                                        <p><b>网址:</b></p>
+                                        <input type="url" name="url" placeholder="以“https:”或“http:”开头的URL">
+                                    </div>
+                                    <div class="from_items">
+                                        <p><b>图标:</b></p>
+                                        <input type="text" name="img" placeholder="图片地址">
+                                    </div>
+                                    <div class="from_items button">
+                                        <button class="quick_add_save">保存</button>
+                                        <button class="quick_add_cancel">取消</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
+                        <!--快捷方式设置 end-->
                     </div>
 
                 </div>
-
+                <!--设置 end-->
+                <!--我的-->
                 <div class="tab-con-item">
+
                     <div class="other">
                         <p>暂无内容</p>
                     </div>
 
                 </div>
-
+                <!--我的 end-->
             </div>
 
         </div>
 
 
     </div>
+    <!-- 侧栏 end -->
 
-
+    <!--搜索框和书签-->
     <div id="content">
         <div class="con">
+
+            <!--一般搜索框上面都有的图片↓-->
             <!-- <div class="shlogo"></div> -->
+
             <div class="sou">
                 <form class="search" action="https://www.baidu.com/s">
                     <img class="se" src="./icon/baidu.ico" title="点击切换搜索引擎"></img>
@@ -360,8 +417,8 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
+
         </div>
         <div class="foot">
            Made with by <b>yeetime</b>&nbsp;
@@ -370,6 +427,8 @@
             </a>
         </div>
     </div>
+    <!--搜索框和书签 end-->
+
 <!--
 作者:D.Young
 主页：https://yyv.me/

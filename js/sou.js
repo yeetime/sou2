@@ -58,7 +58,7 @@ $(document).ready(function() {
         },
     };
 
-    //主页快捷方式
+    //主页快捷方式【预设】
     var quick_list_preinstall = {
         '1':{
             title   :"哔哩哔哩",
@@ -107,8 +107,8 @@ $(document).ready(function() {
     }
 
     //设置内容加载
-    setSeInit();
-    setQuickInit();
+    setSeInit();//搜索引擎设置
+    setQuickInit();//快捷方式设置
 
 
     //获取搜索引擎列表
@@ -207,7 +207,7 @@ $(document).ready(function() {
         $(".search-engine-list").html(html);
     }
 
-    //设置内容加载
+    //设置-搜索引擎列表加载
     function setSeInit () {
         var se_default = getSeDefault();
         var se_list  = getSeList();
@@ -272,7 +272,7 @@ $(document).ready(function() {
         $(".se_add_content").hide();
     });
 
-    //搜索引擎详情
+    //搜索引擎修改
     $(".se_list").on("click",".edit_se",function(){
 
         var se_list = getSeList();
@@ -287,7 +287,7 @@ $(document).ready(function() {
         $(".se_add_content").show();
     });
 
-    //删除搜索引擎
+    //搜索引擎删除
     $(".se_list").on("click",".delete_se",function(){
         var se_default = getSeDefault();
         var key = $(this).val();
@@ -347,6 +347,105 @@ $(document).ready(function() {
 
     //设置-快捷方式加载
     function setQuickInit () {
-        // alert("设置-快捷方式加载");
+        alert("设置-快捷方式加载");
+
+        var quick_list  = getQuickList();
+        var html = "";
+        for(var i in quick_list){
+            tr ="<tr>\
+                    <td>"+i+".&nbsp;</td>\
+                    <td>"+quick_list[i]['title']+"</td>\
+                    <td>\
+                        <button class='edit_quick' value='"+i+"'><span class='iconfont iconbook-edit'></span></button>\
+                        &nbsp;\
+                        <button class='delete_quick' value='"+i+"'><span class='iconfont icondelete'></span></button>\
+                    </td>\
+                </tr>";
+            html+=tr;
+        }
+        $(".quick_list_table").html(html);
     }
+
+    //设置-快捷方式添加
+    $(".set_quick_list_add").click(function () {
+        $(".quick_add_content input").val("");
+        $(".quick_add_content").show();
+    });
+
+    //设置-快捷方式保存
+    $(".quick_add_save").click(function () {
+        var key_inhere = $(".quick_add_content input[name='key_inhere']").val();
+        var key = $(".quick_add_content input[name='key']").val();
+        var title = $(".quick_add_content input[name='title']").val();
+        var url = $(".quick_add_content input[name='url']").val();
+        var img = $(".quick_add_content input[name='img']").val();
+
+        var num = /^\+?[1-9][0-9]*$/;
+        if (!num.test(key)){
+            alert("顺序："+key+" 不是正数数！");
+            return;
+        }
+
+        var quick_list = getQuickList();
+
+        if (quick_list[key]) {
+            alert("顺序:"+key+" 已有数据，不可用");
+            return;
+        }
+
+        if (key_inhere&&key!=key_inhere) {
+            delete quick_list[key_inhere];
+        }
+
+        quick_list[key] = {
+            title: title,
+            url: url,
+            img: img,
+        };
+        setQuickList(quick_list);
+        setQuickInit();
+        $(".quick_add_content").hide();
+    });
+
+    //设置-快捷方式关闭添加表单
+    $(".quick_add_cancel").click(function () {
+        $(".quick_add_content").hide();
+    });
+
+    //恢复预设快捷方式
+    $(".set_quick_list_preinstall").click(function () {
+         var r=confirm("现有设置和数据将被清空！");
+         if (r) {
+             setQuickList (quick_list_preinstall);
+             setQuickInit();
+         }
+    });
+
+    //快捷方式修改
+    $(".quick_list").on("click",".edit_quick",function(){
+
+        var quick_list = getQuickList();
+        var key = $(this).val();
+        $(".quick_add_content input[name='key_inhere']").val(key);
+        $(".quick_add_content input[name='key']").val(key);
+        $(".quick_add_content input[name='title']").val(quick_list[key]["title"]);
+        $(".quick_add_content input[name='url']").val(quick_list[key]["url"]);
+        $(".quick_add_content input[name='img']").val(quick_list[key]["img"]);
+
+        $(".quick_add_content").show();
+    });
+
+    //快捷方式删除
+    $(".quick_list").on("click",".delete_quick",function(){
+
+        var key = $(this).val();
+
+        var r = confirm("顺序 "+key+" 是否删除！");
+        if (r) {
+            var quick_list = getQuickList();
+            delete quick_list[key];
+            setQuickList(quick_list);
+            setQuickInit();
+        }
+    });
 });

@@ -538,33 +538,33 @@ a {
     padding: 10px 15px;
 }
 
-.set_blocks_content .se_list table {
+.set_blocks_content table {
     font-size: 14px;
     text-align:right;
     width:100%;
     border-collapse:collapse;
 }
 
-.set_blocks_content .se_list table tr td:nth-child(2) {
+.set_blocks_content table tr td:nth-child(2) {
     text-align:left;
 }
 
-.set_blocks_content .se_list table tr td {
+.set_blocks_content table tr td {
     border-bottom:1px solid;
     border-color: rgb(71, 144, 191);
 }
 
-.set_blocks_content .se_list button {
+.set_blocks_content button {
     background: none;
     border:1px solid rgba(72, 91, 94, 0);
     border-radius: 3px;
 }
 
-.set_blocks_content .se_list button:hover {
+.set_blocks_content button:hover {
     border:1px solid #485b5e;
 }
 
-.set_blocks_content .se_list button:active {
+.set_blocks_content button:active {
     color: #fff;
     background-color: #599cff;
 }
@@ -588,27 +588,27 @@ a {
     background-color: #599cff;
 }
 
-.se_add_content {
+.add_content {
     border:1px solid #599cff;
     border-radius: 3px;
     margin-top: 10px;
     padding: 8px 12px;
 }
 
-.se_add_content .from_items {
+.add_content .from_items {
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-.se_add_content input {
+.add_content input {
     width: 100%;
 }
 
-.se_add_content .button {
+.add_content .button {
     text-align:center;
 }
 
-.se_add_content button {
+.add_content button {
     width: 30%;
     height: 20px;
     border:1px solid #485b5e;
@@ -618,12 +618,12 @@ a {
     margin:0px 10px;
 }
 
-.se_add_content .se_add_save:active {
+.add_content .se_add_save:active {
     color: #fff;
     background-color: #21ff2c;
 }
 
-.se_add_content .se_add_cancel:active {
+.add_content .se_add_cancel:active {
     color: #fff;
     background-color: #599cff;
 }
