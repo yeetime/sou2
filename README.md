@@ -1,4 +1,4 @@
-# 自由导航 V2
+# Alone 导航 V2
 > 自用导航页，简单、自由。
 
 原项目：https://github.com/5iux/sou  
@@ -7,7 +7,7 @@ v2：侧栏结构修改，使用 jQuery 和 cookie 简单实现了部分数据�
 
 ###  GIF
 
-![自由导航](https://github.com/yeetime/sou2/blob/dev1/sou2-2.gif)
+![Alone 导航](https://github.com/yeetime/sou2/blob/dev1/sou2-2.gif)
 > （图片效果，以实际页面为准）
 
 ## 示例页面：
