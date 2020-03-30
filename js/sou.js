@@ -447,4 +447,43 @@ $(document).ready(function() {
             setQuickInit();
         }
     });
+
+    //我的数据导出
+    $("#my_data_out").click(function () {
+        var se = getSeList();
+        var se_default = getSeDefault();
+        var qulck = getQuickList();
+
+        var mydata = {"se":se,"se_default":se_default,"qulck":qulck};
+        var json = JSON.stringify(mydata);
+        $("#data_txt").val(json);
+    });
+
+    //我的数据导入
+    $("#my_data_in").click(function () {
+        var json = $("#data_txt").val();
+
+        //json 格式校验
+        try {
+            var mydata = JSON.parse(json);
+        } catch (e) {
+            alert("数据解析异常");
+            black;
+        }
+        if (typeof mydata != 'object'||mydata){
+            alert("数据格式错误");
+            black;
+        }
+
+        setSeList(mydata["se"]);
+        Cookies.set('se_default', mydata["se_default"], { expires: 36500 });
+        setQuickList(mydata["qulck"]);
+
+        searchData();
+        quickData();
+        setSeInit();
+        setQuickInit();
+
+        alert("导入成功");
+    });
 });

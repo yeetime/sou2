@@ -628,8 +628,21 @@ a {
     background-color: #599cff;
 }
 
-.other {
-    background: rgb(255, 250, 254);
+.me {
+    text-align: center;
+    color: #fff;
+}
+
+.my_data {
+    color: #fff;
+}
+
+.my_data textarea {
+    width:100%
+}
+
+.my_data button {
+
 }
 
 @media (max-width: 720px) {
