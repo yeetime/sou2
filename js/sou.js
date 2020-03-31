@@ -133,16 +133,13 @@ $(document).ready(function() {
 
     //选择搜索引擎点击事件
     $(document).on('click',function(e){
-        var con = $(".search-engine");
-        var img = $(".se");
-
-        if(con.is(":hidden") && img.is(e.target)){
-            if (img.is(e.target)) {
+        if($(".search-engine").is(":hidden") && $(".se").is(e.target)){
+            if ($(".se").is(e.target)) {
                 seList();
                 $(".search-engine").show();
             }
         }else{
-            if (!con.is(e.target) && con.has(e.target).length === 0) {
+            if (!$(".search-engine").is(e.target) && $(".search-engine").has(e.target).length === 0) {
                 $(".search-engine").hide();
             }
         }
@@ -157,7 +154,7 @@ $(document).ready(function() {
         $(".wd").attr("name",name);
         $(".se").attr("src",img);
         $(".search-engine").hide();
-    })
+    });
 
     //菜单点击
     $("#menu").click(function(event) {
@@ -255,7 +252,7 @@ $(document).ready(function() {
             return;
         }
 
-        if (key_inhere&&key!=key_inhere) {
+        if (key_inhere && key != key_inhere) {
             delete se_list[key_inhere];
         }
 
@@ -400,7 +397,7 @@ $(document).ready(function() {
             return;
         }
 
-        if (key_inhere&&key!=key_inhere) {
+        if (key_inhere && key != key_inhere) {
             delete quick_list[key_inhere];
         }
 
@@ -484,7 +481,7 @@ $(document).ready(function() {
         }
 
         setSeList(mydata["se"]);
-        if (se_default) {
+        if (mydata["se_default"]) {
             Cookies.set('se_default', mydata["se_default"], {expires: 36500});
         }
         setQuickList(mydata["qulck"]);
