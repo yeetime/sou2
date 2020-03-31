@@ -7,7 +7,7 @@
 
 ###  GIF
 
-![Alone 导航](https://github.com/yeetime/sou2/blob/master/sou2.gif)
+![Alone 导航](https://github.com/yeetime/sou2/blob/v1/sou2.gif)
 > （图片效果，以实际页面为准）
 
 ## 示例页面：
