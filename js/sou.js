@@ -124,7 +124,11 @@ $(document).ready(function() {
 
     //设置搜索引擎列表
     function setSeList (se_list) {
-        Cookies.set('se_list', se_list, { expires: 36500 });
+        if(se_list){
+           Cookies.set('se_list', se_list, { expires: 36500 });
+           return true;
+        }
+        return false;
     }
 
     //选择搜索引擎点击事件
@@ -327,7 +331,11 @@ $(document).ready(function() {
 
     //设置快捷方式列表
     function setQuickList(quick_list) {
-        Cookies.set('quick_list', quick_list, {expires: 36500});
+        if(quick_list){
+           Cookies.set('quick_list', quick_list, {expires: 36500});
+           return true;
+        }
+        return false;
     }
 
     //快捷方式数据加载
@@ -470,13 +478,15 @@ $(document).ready(function() {
             alert("数据解析异常");
             black;
         }
-        if (typeof mydata != 'object'||mydata){
+        if (typeof mydata != 'object') {
             alert("数据格式错误");
             black;
         }
 
         setSeList(mydata["se"]);
-        Cookies.set('se_default', mydata["se_default"], { expires: 36500 });
+        if (se_default) {
+            Cookies.set('se_default', mydata["se_default"], {expires: 36500});
+        }
         setQuickList(mydata["qulck"]);
 
         searchData();
