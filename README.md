@@ -2,7 +2,7 @@
 > 自用导航页，简单、自由。
 
 原项目：https://github.com/5iux/sou  
-v1：使用其前端样式，重写部分代码，去除了不需要的模块  
+[v1](https://github.com/yeetime/sou2/tree/v1)：使用其前端样式，重写部分代码，去除了不需要的模块  
 v2：侧栏结构修改，使用 jQuery 和 cookie 简单实现了部分数据的动态加载（伪）  
 
 ###  GIF
