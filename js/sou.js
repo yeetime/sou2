@@ -480,17 +480,20 @@ $(document).ready(function() {
             black;
         }
 
-        setSeList(mydata["se"]);
-        if (mydata["se_default"]) {
-            Cookies.set('se_default', mydata["se_default"], {expires: 36500});
+        if(confirm("当前数据将被覆盖！是否继续导入？")){
+            setSeList(mydata["se"]);
+            if (mydata["se_default"]) {
+                Cookies.set('se_default', mydata["se_default"], {expires: 36500});
+            }
+            setQuickList(mydata["qulck"]);
+
+            searchData();
+            quickData();
+            setSeInit();
+            setQuickInit();
+
+            alert("导入成功");
         }
-        setQuickList(mydata["qulck"]);
 
-        searchData();
-        quickData();
-        setSeInit();
-        setQuickInit();
-
-        alert("导入成功");
     });
 });
