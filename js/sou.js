@@ -457,9 +457,9 @@ $(document).ready(function() {
     $("#my_data_out").click(function () {
         var se = getSeList();
         var se_default = getSeDefault();
-        var qulck = getQuickList();
+        var quick = getQuickList();
 
-        var mydata = {"se":se,"se_default":se_default,"qulck":qulck};
+        var mydata = {"se":se,"se_default":se_default,"quick":quick};
         var json = JSON.stringify(mydata);
         $("#data_txt").val(json);
     });
@@ -485,7 +485,7 @@ $(document).ready(function() {
             if (mydata["se_default"]) {
                 Cookies.set('se_default', mydata["se_default"], {expires: 36500});
             }
-            setQuickList(mydata["qulck"]);
+            setQuickList(mydata["quick"]);
 
             searchData();
             quickData();
