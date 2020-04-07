@@ -9,7 +9,7 @@
 ![Alone 导航](https://github.com/yeetime/sou2/blob/dev1/sou2-2.gif)
 > （图片效果，以实际页面为准）
 
-## 示例页面：
+### 示例页面：
 
 + [https://sou.alone.run/](https://sou.alone.run/)
 
