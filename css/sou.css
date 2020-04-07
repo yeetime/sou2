@@ -520,7 +520,7 @@ a {
 
 .set_blocks {
     background: rgb(221, 221, 221);
-    margin-bottom: 10px;
+    margin-top: 10px;
     border-radius: 5px;
 }
 
@@ -686,6 +686,36 @@ a {
     .home,
     #menu {
         top: 5px;
+    }
+}
+
+@media (max-height: 420px) {
+    .con {
+        margin: 0;
+        top: 0px;
+    }
+    .con .sou form .wd {
+        text-indent: 50px;
+    }
+    .con .sou form:after {
+        content: "";
+        display: block;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        /*background: url(icon/lg.svg) no-repeat center/cover;*/
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .con .shlogo {
+        display: none;
+    }
+    .home,
+    #menu,
+    .foot {
+        display: none;
     }
 }
 
