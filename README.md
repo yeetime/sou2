@@ -6,7 +6,8 @@
 
 ###  GIF
 
-![Alone 导航](https://github.com/yeetime/sou2/blob/dev1/sou2-2.gif)
+![Alone 导航](https://cdn.jsdelivr.net/gh/yeetime/img/20200411182948.gif)
+
 > （图片效果，以实际页面为准）
 
 ### 示例页面：
