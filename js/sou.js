@@ -461,23 +461,48 @@ $(document).ready(function() {
 
         var mydata = {"se":se,"se_default":se_default,"quick":quick};
         var json = JSON.stringify(mydata);
-        $("#data_txt").val(json);
+
+        download("back-up-"+$.now()+".json", json);
     });
 
-    //我的数据导入
+    //我的数据导入 点击触发文件选择
     $("#my_data_in").click(function () {
-        var json = $("#data_txt").val();
+        $("#my_data_file").click();
+    });
 
+    // 选择文件后读取文件内容
+    $("#my_data_file").change(function () {
+        var selectedFile = document.getElementById('my_data_file').files[0];
+        //var name = selectedFile.name;//读取选中文件的文件名
+        //var size = selectedFile.size;//读取选中文件的大小
+        //console.log("文件名:"+name+" 大小:"+size);
+
+        var reader = new FileReader();//这是核心,读取操作就是由它完成.
+        reader.readAsText(selectedFile);//读取文件的内容,也可以读取文件的URL
+        reader.onload = function () {
+            //当读取完成后回调这个函数,然后此时文件的内容存储到了result中,直接操作即可
+            //console.log(this.result);
+
+            // 导入数据
+            importData(this.result);
+        }
+    });
+
+    /**
+     * 导入备份
+     * @param json
+     */
+    function importData(json) {
         //json 格式校验
         try {
             var mydata = JSON.parse(json);
         } catch (e) {
             alert("数据解析异常");
-            black;
+            return;
         }
         if (typeof mydata != 'object') {
             alert("数据格式错误");
-            black;
+            return;
         }
 
         if(confirm("当前数据将被覆盖！是否继续导入？")){
@@ -494,6 +519,23 @@ $(document).ready(function() {
 
             alert("导入成功");
         }
+    }
 
-    });
+    /**
+     * 下載文本为文件
+     * @param filename 文件名
+     * @param text     内容
+     */
+    function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
 });
