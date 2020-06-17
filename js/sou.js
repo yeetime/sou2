@@ -191,7 +191,7 @@ $(document).ready(function() {
         var se_list = getSeList();
         var defaultSe = se_list[se_default];
         if (defaultSe){
-            $("#search").attr("action", defaultSe["url"]);
+            $(".search").attr("action", defaultSe["url"]);
             $(".se").attr("src", defaultSe["img"]);
             $(".wd").attr("name", defaultSe["name"]);
         }
