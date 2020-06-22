@@ -88,7 +88,6 @@ a {
 }
 
 .con .shlogo a {
-    width: 100%;
     display: block;
     width: 100%;
     height: 100%;
@@ -132,9 +131,9 @@ a {
 }
 
 .sou form .se:hover {
-    filter:alpha(Opacity=70);
-    -moz-opacity:0.7;
-    opacity: 0.7
+    opacity: 0.7;
+    filter:alpha(opacity=70); /* IE8 及其更早版本 */
+    -moz-opacity: 0.7;
 }
 
 .con .sou form .wd {
@@ -175,9 +174,9 @@ a {
     left: 0;
     width: 100%;
     background: #FFF;
-    padding: 15px 0px 0px 0px;
+    padding: 15px 0 0 0;
     border-radius: 5px;
-    box-shadow: 0px 5px 20px 0px #d8d7d7;
+    box-shadow: 0 5px 20px 0 #d8d7d7;
     transition: all 0.3s;
     display: none;
     z-index: 999
@@ -206,8 +205,8 @@ a {
 
 .search-engine ul::before {
     content: '';
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
     position: absolute;
     top: -15px;
     left: 20px;
@@ -254,7 +253,7 @@ a {
     border-radius: 15px;
     float: left;
     margin-right: 5px;
-    margin-top: 2.5px;
+    margin-top: 2px;
 }
 
 .quick-div {
@@ -278,7 +277,7 @@ a {
     line-height: 40px;
     text-align: left;
     text-indent: 40px;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     cursor: pointer;
     position: relative;
     border-radius: 10px;
@@ -391,10 +390,10 @@ a {
 
 .side {
     width: 357px;
-    padding:0px 10px;
+    padding: 0 10px;
     height: 100%;
     position: absolute;
-    right: 0px;
+    right: 0;
     z-index: 2000;
     background: #222d46;
     transition: 0.3s all linear;
@@ -487,7 +486,7 @@ a {
 .list ul li:hover a {
     color: #fff;
     background-color: #29f;
-    background-image: linear-gradient(135deg, rgba(35, 153, 255) 0%, rgba(84, 175, 253) 100%);
+    background-image: linear-gradient(135deg, rgba(35, 153, 255, 0) , rgba(84, 175, 253, 1));
     box-shadow: 0 3px 3px rgba(0, 40, 70, .3);
 }
 
@@ -540,28 +539,28 @@ a {
 
 .set_blocks_content table {
     font-size: 14px;
-    text-align:right;
-    width:100%;
-    border-collapse:collapse;
+    text-align: right;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .set_blocks_content table tr td:nth-child(2) {
-    text-align:left;
+    text-align: left;
 }
 
 .set_blocks_content table tr td {
-    border-bottom:1px solid;
+    border-bottom: 1px solid;
     border-color: rgb(71, 144, 191);
 }
 
 .set_blocks_content button {
     background: none;
-    border:1px solid rgba(72, 91, 94, 0);
+    border: 1px solid rgba(72, 91, 94, 0);
     border-radius: 3px;
 }
 
 .set_blocks_content button:hover {
-    border:1px solid #485b5e;
+    border: 1px solid #485b5e;
 }
 
 .set_blocks_content button:active {
@@ -571,15 +570,15 @@ a {
 
 .set_blocks_content .se_add_preinstall {
     margin-top: 10px;
-    text-align:center;
+    text-align: center;
 }
 
 .set_blocks_content .se_add_preinstall button {
     width: 40%;
     height: 20px;
-    border:1px solid #485b5e;
+    border: 1px solid #485b5e;
     border-radius: 3px;
-    text-align:center;
+    text-align: center;
     background: none;
 }
 
@@ -589,7 +588,7 @@ a {
 }
 
 .add_content {
-    border:1px solid #599cff;
+    border: 1px solid #599cff;
     border-radius: 3px;
     margin-top: 10px;
     padding: 8px 12px;
@@ -605,17 +604,17 @@ a {
 }
 
 .add_content .button {
-    text-align:center;
+    text-align: center;
 }
 
 .add_content button {
     width: 30%;
     height: 20px;
-    border:1px solid #485b5e;
+    border: 1px solid #485b5e;
     border-radius: 3px;
-    text-align:center;
+    text-align: center;
     background: none;
-    margin:0px 10px;
+    margin: 0 10px;
 }
 
 .add_content .se_add_save:active {
@@ -638,7 +637,7 @@ a {
 }
 
 .my_data textarea {
-    width:100%
+    width: 100%
 }
 
 .my_data button {
@@ -647,42 +646,53 @@ a {
 
 @media (max-width: 720px) {
     .con {
-        top: 0px;
+        top: 0;
     }
+
     .con .shlogo {
         width: 320px;
         height: 100px;
     }
+
     .con .sou form .wd:focus {
         background: #f1f1f1;
         box-shadow: none;
         border-color: #ccc
     }
+
     .con .sou form button {
         border-radius: 25px;
     }
+
     #menu.on {
         right: 270px;
     }
+
     .side {
         width: 227px;
     }
+
     .tab-con {
         width: 227px;
     }
+
     .tab-con-item {
         width: 227px;
     }
+
     .side ul {
         width: 220px;
     }
+
     .con .sou ul li {
         width: 100px;
         font-size: 12px;
     }
-    .quick{
-        left: 0px;
+
+    .quick {
+        left: 0;
     }
+
     .home,
     #menu {
         top: 5px;
@@ -692,11 +702,13 @@ a {
 @media (max-height: 420px) {
     .con {
         margin: 0;
-        top: 0px;
+        top: 0;
     }
+
     .con .sou form .wd {
         text-indent: 50px;
     }
+
     .con .sou form:after {
         content: "";
         display: block;
@@ -709,9 +721,11 @@ a {
         border-radius: 50%;
         overflow: hidden;
     }
+
     .con .shlogo {
         display: none;
     }
+
     .home,
     #menu,
     .foot {
@@ -726,12 +740,12 @@ a {
 
 ::-webkit-scrollbar-track {
     background: #222d46;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb {
     background: #293550;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
