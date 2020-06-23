@@ -90,6 +90,7 @@ var quick_list_preinstall = {
     },
 };
 
+
 // 获取搜索引擎列表
 function getSeList() {
     var se_list_local = Cookies.get('se_list');
@@ -119,8 +120,28 @@ function getSeDefault() {
 
 // 主题初始化
 function themesInit() {
-    $("#content").css("background-color", "#f5f5f5");
-    //$("#content").css("background-color", "#2B2B2B");
+    var themes_1 = {
+        'name' : 'Light',
+        'content_bg' : "#f5f5f5",
+    }
+    var themes_2 = {
+        'name' : 'Dark',
+        'bg' : "#2B2B2B",
+        'pop_bg' : "#3C3F41",
+        'top_bg' : "#365880",
+        'bottom_bg' : "#4C5052",
+        'text_color' : "#BBBBBB",
+    }
+
+    $("#content").css("background-color", themes_2["bg"]);//主页背景
+    $(".con .sou form .wd").css({
+        "border" : "1px solid "+ themes_2["bottom_bg"],
+        "color" : themes_2["text_color"],
+    });//输入框
+    $(".search-engine").css("background-color", themes_2["pop_bg"]);//搜索引擎选择弹窗
+    $(".search-engine-list .se-li").css("background-color", themes_2["bottom_bg"]);//搜索引擎选择弹窗里的按钮
+    $(".quick").css({"background-color" : themes_2["bottom_bg"]});//快捷方式
+    $(".quick a").css({"color" : themes_2["text_color"]});//快捷方式 文本
 }
 // 搜索框数据加载
 function searchData() {
@@ -276,11 +297,11 @@ function download(filename, text) {
 
 $(document).ready(function () {
 
-    // 主题初始化
-    themesInit();
-
     // 搜索框数据加载
     searchData();
+
+    // 搜索引擎列表加载
+    seList();
 
     // 快捷方式数据加载
     quickData();
@@ -289,11 +310,13 @@ $(document).ready(function () {
     setSeInit();//搜索引擎设置
     setQuickInit();//快捷方式设置
 
+    // 主题初始化(必须在页面元素都加载完成后再加载主题,每当页面元素改变时都应进行主题初始化)
+    themesInit();
+
     // 选择搜索引擎点击事件
     $(document).on('click', function (e) {
         if ($(".search-engine").is(":hidden") && $(".se").is(e.target)) {
             if ($(".se").is(e.target)) {
-                seList();
                 $(".search-engine").show();
             }
         } else {
