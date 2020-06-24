@@ -1,6 +1,6 @@
 # Alone 导航 V2
 
-**原项目：**https://github.com/5iux/sou  
+**原项目：** https://github.com/5iux/sou  
 
 **修改版**  
 - [**v1**](https://github.com/yeetime/sou2/tree/v1)：使用其前端样式，重写部分代码，去除了不需要的模块。  
