@@ -202,13 +202,12 @@ a {
     justify-content: left;
 }
 
-.search-engine ul::before {
-    content: '';
+.search-engine-tip {
     width: 0;
     height: 0;
     position: absolute;
     top: -15px;
-    left: 20px;
+    left: 15px;
     border-top: 8px solid transparent;
     border-right: 8px solid transparent;
     border-bottom: 8px solid #fff;
@@ -554,12 +553,12 @@ a {
 
 .set_blocks_content button {
     background: none;
-    border: 1px solid rgba(72, 91, 94, 0);
+    border: 1px solid rgb(72, 91, 94);
     border-radius: 3px;
 }
 
 .set_blocks_content button:hover {
-    border: 1px solid #485b5e;
+    border: 2px solid #485b5e;
 }
 
 .set_blocks_content button:active {
@@ -624,6 +623,21 @@ a {
 .add_content .se_add_cancel:active {
     color: #fff;
     background-color: #599cff;
+}
+
+.but-ordinary {
+    width: 30%;
+    height: 20px;
+    border-radius: 3px;
+    text-align: center;
+    background: none;
+    margin: 0 10px;
+}
+
+.but-active {
+    color: #fff;
+    background: #599cff;
+    border: 2px solid #485b5e;
 }
 
 .me {

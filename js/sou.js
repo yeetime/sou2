@@ -11,7 +11,7 @@ github：https://github.com/yeetime/sou2
 */
 
 // 搜索引擎列表【预设】
-var se_list_preinstall = {
+const se_list_preinstall = {
     '1': {
         id: 1,
         title: "百度",
@@ -57,7 +57,7 @@ var se_list_preinstall = {
 };
 
 // 主页快捷方式【预设】
-var quick_list_preinstall = {
+const quick_list_preinstall = {
     '1': {
         title: "哔哩哔哩",
         url: "https://www.bilibili.com/",
@@ -90,6 +90,25 @@ var quick_list_preinstall = {
     },
 };
 
+// 主题方案【预设】
+const themes_preinstall = {
+    '1': {
+        'name': 'light',// 主题名称
+        'bg': "#f5f5f5",// 背景色
+        'pop_bg': "#ffffff",// 弹窗背景色
+        'shadow': "#d8d7d7",// 阴影
+        'bottom_bg': "#eeeeee",// 按钮背景
+        'text_color': "#000000",// 文本颜色
+    },
+    '2': {
+        'name': 'darcula',
+        'bg': "#2b2b2b",
+        'pop_bg': "#3c3f41",
+        'shadow': "#211f1f",
+        'bottom_bg': "#4c5052",
+        'text_color': "#bbbbbb",
+    },
+};
 
 // 获取搜索引擎列表
 function getSeList() {
@@ -120,29 +139,81 @@ function getSeDefault() {
 
 // 主题初始化
 function themesInit() {
-    var themes_1 = {
-        'name' : 'Light',
-        'content_bg' : "#f5f5f5",
-    }
-    var themes_2 = {
-        'name' : 'Dark',
-        'bg' : "#2B2B2B",
-        'pop_bg' : "#3C3F41",
-        'top_bg' : "#365880",
-        'bottom_bg' : "#4C5052",
-        'text_color' : "#BBBBBB",
-    }
+    var themes = getThemes();
+    var key = getThemesDefault();
 
-    $("#content").css("background-color", themes_2["bg"]);//主页背景
+    var theme = themes[key];
+
+    $("#content").css("background-color", theme["bg"]);//主页背景
     $(".con .sou form .wd").css({
-        "border" : "1px solid "+ themes_2["bottom_bg"],
-        "color" : themes_2["text_color"],
+        "border": "1px solid " + theme["bottom_bg"],
+        "color": theme["text_color"],
     });//输入框
-    $(".search-engine").css("background-color", themes_2["pop_bg"]);//搜索引擎选择弹窗
-    $(".search-engine-list .se-li").css("background-color", themes_2["bottom_bg"]);//搜索引擎选择弹窗里的按钮
-    $(".quick").css({"background-color" : themes_2["bottom_bg"]});//快捷方式
-    $(".quick a").css({"color" : themes_2["text_color"]});//快捷方式 文本
+    $(".search-engine").css({
+        "background-color": theme["pop_bg"],
+        "box-shadow": "0 5px 20px 0 " + theme["shadow"],
+    });//搜索引擎选择弹窗
+    $(".search-engine-list .se-li").css({
+        "background-color": theme["bottom_bg"],
+        "color": theme["text_color"],
+    });//搜索引擎选择弹窗里的按钮
+    $(".search-engine-tip").css({
+        "border-bottom": "8px solid " + theme["pop_bg"],
+    });//搜索引擎选择弹窗上的箭头
+    $(".quick").css({"background-color": theme["bottom_bg"]});//快捷方式
+    $(".search-engine ul::before").css({"border-bottom": "8px solid " + theme["pop_bg"]});//快捷方式
+    $(".quick a").css({"color": theme["text_color"]});//快捷方式 文本
+    $(".foot").css({"color": theme["text_color"]});//底部 文本
 }
+
+// 获取默认主题
+function getThemesDefault() {
+    var theme_default = Cookies.get('theme_default');
+    return theme_default ? theme_default : 1;
+}
+
+// 修改默认主题
+function setThemesDefault(key) {
+    Cookies.set('theme_default', key, {expires: 36500});
+    return true;
+}
+
+// 获取主题方案列表
+function getThemes() {
+    var themes = Cookies.get('themes');
+    if (themes && themes !== "{}") {
+        return JSON.parse(themes);
+    } else {
+        setThemes(themes_preinstall);
+        return themes_preinstall;
+    }
+}
+
+// 设置主题列表 Cookies
+function setThemes(themes) {
+    if (themes) {
+        Cookies.set('themes', themes, {expires: 36500});
+        return true;
+    }
+    return false;
+}
+
+// 设置-主题方案列表加载
+function setThemesInit() {
+    var html = "";
+    var themes = getThemes();
+    var theme_default = getThemesDefault();
+    for (var i in themes) {
+        if (i === theme_default) {
+            //html += "<button class=\"but-active but-ordinary set-theme\" data-id=\"" + i + "\">" + themes[i]["name"] + "</button>";
+            html += "<input type=\"button\" class=\"but-ordinary but-active\" value=\"" + themes[i]["name"] + "\">";
+        } else {
+            html += "<button class=\"but-ordinary set-theme\" data-id=\"" + i + "\">" + themes[i]["name"] + "</button>";
+        }
+    }
+    $("#themes").html(html);
+}
+
 // 搜索框数据加载
 function searchData() {
     var se_default = getSeDefault();
@@ -183,7 +254,7 @@ function setSeInit() {
         if (i === se_default) {
             tr = "<tr><td><span class='iconfont iconhome'></span></td>";
         }
-        tr += "<td>" + i + ". " + se_list[i]["title"] + "</td><td><button class='set_se_default' value='" + i + "'><span class='iconfont iconstrore-add'></span></button><button class='edit_se' value='" + i + "'><span class='iconfont iconbook-edit'></span></button> <button class='delete_se' value='" + i + "'><span class='iconfont icondelete'></span></button></td></tr>";
+        tr += "<td>" + i + ". " + se_list[i]["title"] + "</td><td><button class='set_se_default' value='" + i + "'><span class='iconfont iconstrore-add'></span></button> <button class='edit_se' value='" + i + "'><span class='iconfont iconbook-edit'></span></button> <button class='delete_se' value='" + i + "'><span class='iconfont icondelete'></span></button></td></tr>";
         html += tr;
     }
     $(".se_list_table").html(html);
@@ -267,11 +338,12 @@ function importData(json) {
             Cookies.set('se_default', mydata["se_default"], {expires: 36500});
         }
         setQuickList(mydata["quick"]);
+        setThemes(mydata["themes"]);
+        setThemesDefault(mydata["theme_default"]);
 
-        searchData();
-        quickData();
         setSeInit();
         setQuickInit();
+        setThemesInit();
 
         alert("导入成功");
     }
@@ -295,6 +367,24 @@ function download(filename, text) {
     document.body.removeChild(element);
 }
 
+// 侧边栏打开
+function openSide() {
+    $("#menu").addClass('on');
+    $(".side").removeClass('closed');
+}
+
+// 侧边栏关闭
+function closeSide() {
+    $("#menu").removeClass('on');
+    $(".side").addClass('closed');
+
+    // 刷新页面
+    searchData();
+    seList();
+    quickData();
+    themesInit();
+}
+
 $(document).ready(function () {
 
     // 搜索框数据加载
@@ -306,12 +396,13 @@ $(document).ready(function () {
     // 快捷方式数据加载
     quickData();
 
+    // 主题初始化(必须在页面元素都加载完成后再加载主题,每当页面元素改变时都应进行主题初始化)
+    themesInit();
+
     // 设置内容加载
     setSeInit();//搜索引擎设置
     setQuickInit();//快捷方式设置
-
-    // 主题初始化(必须在页面元素都加载完成后再加载主题,每当页面元素改变时都应进行主题初始化)
-    themesInit();
+    setThemesInit();//主题方案
 
     // 选择搜索引擎点击事件
     $(document).on('click', function (e) {
@@ -339,12 +430,18 @@ $(document).ready(function () {
 
     // 菜单点击
     $("#menu").click(function (event) {
-        $(this).toggleClass('on');
-        $(".side").toggleClass('closed');
+        // $(this).toggleClass('on');
+        // $(".side").toggleClass('closed');
+        if ($(this).attr("class") === "on") {
+            closeSide();
+        } else {
+            openSide();
+        }
     });
     $("#content").click(function (event) {
-        $(".on").removeClass('on');
-        $(".side").addClass('closed');
+        // $(".on").removeClass('on');
+        // $(".side").addClass('closed');
+        closeSide();
     });
 
     // 侧栏标签卡切换
@@ -533,13 +630,28 @@ $(document).ready(function () {
         }
     });
 
+    // 主题切换
+    $("#themes").on("click", ".set-theme", function () {
+        var key = $(this).attr("data-id");
+        setThemesDefault(key);
+        setThemesInit();
+    });
+
     // 我的数据导出
     $("#my_data_out").click(function () {
         var se = getSeList();
         var se_default = getSeDefault();
         var quick = getQuickList();
+        var themes = getThemes()
+        var theme_default = getThemesDefault()
 
-        var mydata = {"se": se, "se_default": se_default, "quick": quick};
+        var mydata = {
+            "se": se,
+            "se_default": se_default,
+            "quick": quick,
+            "themes": themes,
+            "theme_default": theme_default,
+        };
         var json = JSON.stringify(mydata);
 
         download("back-up-" + $.now() + ".json", json);
