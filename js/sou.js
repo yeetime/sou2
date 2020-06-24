@@ -98,7 +98,8 @@ const themes_preinstall = {
         'pop_bg': "#ffffff",// 弹窗背景色
         'shadow': "#d8d7d7",// 阴影
         'bottom_bg': "#eeeeee",// 按钮背景
-        'text_color': "#000000",// 文本颜色
+        'top_bg': "#2299ff",// 高亮背景
+        'text_color': "#777777",// 文本颜色
     },
     '2': {
         'name': 'darcula',
@@ -106,6 +107,7 @@ const themes_preinstall = {
         'pop_bg': "#3c3f41",
         'shadow': "#211f1f",
         'bottom_bg': "#4c5052",
+        'top_bg': "#365880",// 高亮背景
         'text_color': "#bbbbbb",
     },
 };
@@ -146,7 +148,7 @@ function themesInit() {
 
     $("#content").css("background-color", theme["bg"]);//主页背景
     $(".con .sou form .wd").css({
-        "border": "1px solid " + theme["bottom_bg"],
+        "border": "1px solid " + theme["text_color"],
         "color": theme["text_color"],
     });//输入框
     $(".search-engine").css({
@@ -230,7 +232,16 @@ function searchData() {
     if (wid < 640) {
         $(".wd").attr('autocomplete', 'off');
     } else {
+        var themes = getThemes();
+        var key = getThemesDefault();
+        var theme = themes[key];
+
         $(".wd").focus();
+        $(":focus").css({
+            "background-color": theme["pop_bg"],
+            "border": "1px solid " + theme["top_bg"],
+            "box-shadow": "0 1px 6px 0 " + theme["top_bg"],
+        });//输入框
     }
 }
 
@@ -439,6 +450,32 @@ $(document).ready(function () {
         if ($("#menu").attr("class") === "on") {
             closeSide();
         }
+    });
+
+    // 搜索框获得焦点事件
+    $(".wd").focus(function () {
+        var themes = getThemes();
+        var key = getThemesDefault();
+        var theme = themes[key];
+
+        $(".wd").css({
+            "background-color": theme["pop_bg"],
+            "border": "2px solid " + theme["top_bg"],
+            "box-shadow": "0 1px 6px 0 " + theme["top_bg"],
+        });//输入框
+    });
+
+    // 搜索框失去焦点事件
+    $(".wd").blur(function () {
+        var themes = getThemes();
+        var key = getThemesDefault();
+        var theme = themes[key];
+
+        $(".wd").css({
+            "background-color": "",
+            "border": "1px solid " + theme["text_color"],
+            "box-shadow": "",
+        });//输入框
     });
 
     // 侧栏标签卡切换
