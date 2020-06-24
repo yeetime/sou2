@@ -378,8 +378,7 @@ function closeSide() {
     $("#menu").removeClass('on');
     $(".side").addClass('closed');
 
-    // 刷新页面
-    searchData();
+    // 刷新主页数据
     seList();
     quickData();
     themesInit();
@@ -430,8 +429,6 @@ $(document).ready(function () {
 
     // 菜单点击
     $("#menu").click(function (event) {
-        // $(this).toggleClass('on');
-        // $(".side").toggleClass('closed');
         if ($(this).attr("class") === "on") {
             closeSide();
         } else {
@@ -439,9 +436,9 @@ $(document).ready(function () {
         }
     });
     $("#content").click(function (event) {
-        // $(".on").removeClass('on');
-        // $(".side").addClass('closed');
-        closeSide();
+        if ($("#menu").attr("class") === "on") {
+            closeSide();
+        }
     });
 
     // 侧栏标签卡切换
