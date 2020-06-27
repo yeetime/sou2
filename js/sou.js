@@ -11,7 +11,7 @@ github：https://github.com/yeetime/sou2
 */
 
 // 搜索引擎列表【预设】
-const se_list_preinstall = {
+var se_list_preinstall = {
     '1': {
         id: 1,
         title: "百度",
@@ -57,7 +57,7 @@ const se_list_preinstall = {
 };
 
 // 主页快捷方式【预设】
-const quick_list_preinstall = {
+var quick_list_preinstall = {
     '1': {
         title: "哔哩哔哩",
         url: "https://www.bilibili.com/",
@@ -91,14 +91,14 @@ const quick_list_preinstall = {
 };
 
 // 主题方案【预设】
-const themes_preinstall = {
+var themes_preinstall = {
     '1': {
         'name': 'light',// 主题名称
         'bg': "#f5f5f5",// 背景色
         'pop_bg': "#ffffff",// 弹窗背景色
         'shadow': "#d8d7d7",// 阴影
-        'bottom_bg': "#eeeeee",// 按钮背景
-        'top_bg': "#2299ff",// 高亮背景
+        'bottom_bg': "#ddd",// 按钮背景
+        //'top_bg': "#2299ff",// 高亮背景
         'text_color': "#777777",// 文本颜色
     },
     '2': {
@@ -107,7 +107,7 @@ const themes_preinstall = {
         'pop_bg': "#3c3f41",
         'shadow': "#211f1f",
         'bottom_bg': "#4c5052",
-        'top_bg': "#365880",// 高亮背景
+        //'top_bg': "#365880",// 高亮背景
         'text_color': "#bbbbbb",
     },
 };
@@ -148,7 +148,7 @@ function themesInit() {
 
     $("#content").css("background-color", theme["bg"]);//主页背景
     $(".con .sou form .wd").css({
-        "border": "1px solid " + theme["text_color"],
+        "border": "1px solid " + theme["bottom_bg"],
         "color": theme["text_color"],
     });//输入框
     $(".search-engine").css({
@@ -163,7 +163,7 @@ function themesInit() {
         "border-bottom": "8px solid " + theme["pop_bg"],
     });//搜索引擎选择弹窗上的箭头
     $(".quick").css({"background-color": theme["bottom_bg"]});//快捷方式
-    $(".search-engine ul::before").css({"border-bottom": "8px solid " + theme["pop_bg"]});//快捷方式
+    //$(".search-engine ul::before").css({"border-bottom": "8px solid " + theme["pop_bg"]});//快捷方式
     $(".quick a").css({"color": theme["text_color"]});//快捷方式 文本
     $(".foot").css({"color": theme["text_color"]});//底部 文本
 }
@@ -216,6 +216,30 @@ function setThemesInit() {
     $("#themes").html(html);
 }
 
+// 搜索框高亮
+function focusWd() {
+    var themes = getThemes();
+    var key = getThemesDefault();
+    var theme = themes[key];
+
+    $(".wd").css({
+        "background-color": theme["pop_bg"],
+        "box-shadow": "0 1px 6px 0 " + theme["shadow"],
+    });//输入框
+}
+
+//搜索框取消高亮
+function blurWd() {
+    var themes = getThemes();
+    var key = getThemesDefault();
+    var theme = themes[key];
+
+    $(".wd").css({
+        "background-color": "",
+        "box-shadow": "",
+    });//输入框
+}
+
 // 搜索框数据加载
 function searchData() {
     var se_default = getSeDefault();
@@ -232,16 +256,8 @@ function searchData() {
     if (wid < 640) {
         $(".wd").attr('autocomplete', 'off');
     } else {
-        var themes = getThemes();
-        var key = getThemesDefault();
-        var theme = themes[key];
-
         $(".wd").focus();
-        $(":focus").css({
-            "background-color": theme["pop_bg"],
-            "border": "1px solid " + theme["top_bg"],
-            "box-shadow": "0 1px 6px 0 " + theme["top_bg"],
-        });//输入框
+        focusWd();
     }
 }
 
@@ -454,28 +470,12 @@ $(document).ready(function () {
 
     // 搜索框获得焦点事件
     $(".wd").focus(function () {
-        var themes = getThemes();
-        var key = getThemesDefault();
-        var theme = themes[key];
-
-        $(".wd").css({
-            "background-color": theme["pop_bg"],
-            "border": "2px solid " + theme["top_bg"],
-            "box-shadow": "0 1px 6px 0 " + theme["top_bg"],
-        });//输入框
+        focusWd();
     });
 
     // 搜索框失去焦点事件
     $(".wd").blur(function () {
-        var themes = getThemes();
-        var key = getThemesDefault();
-        var theme = themes[key];
-
-        $(".wd").css({
-            "background-color": "",
-            "border": "1px solid " + theme["text_color"],
-            "box-shadow": "",
-        });//输入框
+        blurWd();
     });
 
     // 侧栏标签卡切换
