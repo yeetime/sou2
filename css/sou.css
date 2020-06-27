@@ -25,7 +25,6 @@ body {
     height: 100%;
     position: relative;
     overflow: hidden;
-    background: #f5f5f5;
 }
 
 html {
@@ -84,7 +83,7 @@ a {
     width: 480px;
     height: 120px;
     margin: 20px auto;
-    background: url(#) no-repeat center/cover;
+    background: url("../icon/shlogo.png") no-repeat center/cover;
 }
 
 .con .shlogo a {
@@ -147,11 +146,11 @@ a {
     font-size: 18px;
 }
 
-.con .sou form .wd:focus {
-    background: #fff;
-    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-    border-color: #fff
-}
+/*.con .sou form .wd:focus {*/
+/*    background: #fff;*/
+/*    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);*/
+/*    border-color: #fff*/
+/*}*/
 
 .sou form .s {
     width: 40px;
@@ -203,13 +202,12 @@ a {
     justify-content: left;
 }
 
-.search-engine ul::before {
-    content: '';
+.search-engine-tip {
     width: 0;
     height: 0;
     position: absolute;
     top: -15px;
-    left: 20px;
+    left: 15px;
     border-top: 8px solid transparent;
     border-right: 8px solid transparent;
     border-bottom: 8px solid #fff;
@@ -555,12 +553,12 @@ a {
 
 .set_blocks_content button {
     background: none;
-    border: 1px solid rgba(72, 91, 94, 0);
+    border: 1px solid rgb(72, 91, 94);
     border-radius: 3px;
 }
 
 .set_blocks_content button:hover {
-    border: 1px solid #485b5e;
+    border: 2px solid #485b5e;
 }
 
 .set_blocks_content button:active {
@@ -625,6 +623,21 @@ a {
 .add_content .se_add_cancel:active {
     color: #fff;
     background-color: #599cff;
+}
+
+.but-ordinary {
+    width: 30%;
+    height: 20px;
+    border-radius: 3px;
+    text-align: center;
+    background: none;
+    margin: 0 10px;
+}
+
+.but-active {
+    color: #fff;
+    background: #599cff;
+    border: 2px solid #485b5e;
 }
 
 .me {
