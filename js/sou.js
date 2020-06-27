@@ -138,7 +138,6 @@ function getSeDefault() {
     return se_default ? se_default : 1;
 }
 
-
 // 主题初始化
 function themesInit() {
     var themes = getThemes();
@@ -230,10 +229,6 @@ function focusWd() {
 
 //搜索框取消高亮
 function blurWd() {
-    var themes = getThemes();
-    var key = getThemesDefault();
-    var theme = themes[key];
-
     $(".wd").css({
         "background-color": "",
         "box-shadow": "",
