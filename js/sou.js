@@ -98,8 +98,9 @@ var themes_preinstall = {
         'pop_bg': "#ffffff",// 弹窗背景色
         'shadow': "#d8d7d7",// 阴影
         'bottom_bg': "#ddd",// 按钮背景
-        //'top_bg': "#2299ff",// 高亮背景
+        //'top_bg': "#2299ff",// 高亮
         'text_color': "#777777",// 文本颜色
+        'bg_img': "",//背景图片
     },
     '2': {
         'name': 'darcula',
@@ -107,10 +108,50 @@ var themes_preinstall = {
         'pop_bg': "#3c3f41",
         'shadow': "#211f1f",
         'bottom_bg': "#4c5052",
-        //'top_bg': "#365880",// 高亮背景
+        //'top_bg': "#365880",// 高亮
         'text_color': "#bbbbbb",
+        'bg_img': "",//背景图片
     },
 };
+
+//背景图片
+var bg_img_preinstall = {
+    "type" : "3",// 1:使用主题默认的背景图片、2:关闭背景图片、3:使用自定义的背景图片
+    "path" : "https://cdn.jsdelivr.net/gh/yeetime/img/20200627173550.png",//背景图片
+};
+
+// 获取背景图片
+function getBgImg() {
+    var bg_img_local = Cookies.get('bg_img');
+    if (bg_img_local && bg_img_local !== "{}") {
+        return JSON.parse(bg_img_local);
+    } else {
+        setBgImg(bg_img_preinstall);
+        return bg_img_preinstall;
+    }
+}
+
+// 设置背景图片
+function setBgImg(bg_img){
+    if (bg_img) {
+        Cookies.set('bg_img', bg_img, {expires: 36500});
+        return true;
+    }
+    return false;
+}
+
+// 设置-壁纸
+function setBgImgInit() {
+    var bg_img = getBgImg();
+
+    if (bg_img["type"] === "3") {
+        $("input[name='wallpaper-type'][value="+bg_img["type"]+"]").attr("checked", "checked");
+        $("#wallpaper-url").val(bg_img["path"]);
+        $("#wallpaper_url").show();
+    } else {
+        $("#wallpaper_url").hide();
+    }
+}
 
 // 获取搜索引擎列表
 function getSeList() {
@@ -140,12 +181,28 @@ function getSeDefault() {
 
 // 主题初始化
 function themesInit() {
+    var bg_img = getBgImg();
     var themes = getThemes();
     var key = getThemesDefault();
-
     var theme = themes[key];
 
-    $("#content").css("background-color", theme["bg"]);//主页背景
+    switch (bg_img["type"]) {
+        case "1":
+            if (theme["bg_img"]) {
+                $("body").css("background-image", "url(\"" + theme["bg_img"] +"\")");//主题图片
+            } else {
+                $("body").css("background-image", "none");//无
+            }
+            break;
+        case "2":
+            $("body").css("background-image", "none");//无
+            break;
+        case "3":
+            $("body").css("background-image", "url(\"" + bg_img["path"] +"\")");//自定义
+            break;
+    }
+
+    $("body").css("background-color", theme["bg"]);//主页背景
     $(".con .sou form .wd").css({
         "border": "1px solid " + theme["bottom_bg"],
         "color": theme["text_color"],
@@ -162,7 +219,6 @@ function themesInit() {
         "border-bottom": "8px solid " + theme["pop_bg"],
     });//搜索引擎选择弹窗上的箭头
     $(".quick").css({"background-color": theme["bottom_bg"]});//快捷方式
-    //$(".search-engine ul::before").css({"border-bottom": "8px solid " + theme["pop_bg"]});//快捷方式
     $(".quick a").css({"color": theme["text_color"]});//快捷方式 文本
     $(".foot").css({"color": theme["text_color"]});//底部 文本
 }
@@ -424,6 +480,7 @@ $(document).ready(function () {
     setSeInit();//搜索引擎设置
     setQuickInit();//快捷方式设置
     setThemesInit();//主题方案
+    setBgImgInit();//壁纸
 
     // 选择搜索引擎点击事件
     $(document).on('click', function (e) {
@@ -664,6 +721,30 @@ $(document).ready(function () {
         var key = $(this).attr("data-id");
         setThemesDefault(key);
         setThemesInit();
+    });
+
+    // 壁纸设置
+    $("#wallpaper").on("click", ".set-wallpaper", function () {
+        var type = $(this).val();
+        var bg_img = getBgImg();
+
+        if (type === "3") {
+            $("#wallpaper_url").show();
+            $("#wallpaper-url").val(bg_img["path"]);
+        } else {
+            $("#wallpaper_url").hide();
+        }
+        bg_img["type"] = type;
+        setBgImg(bg_img);
+    });
+
+    // 壁纸自定义
+    $(".wallpaper-submit").click(function () {
+        var url = $("#wallpaper-url").val();
+        var bg_img = getBgImg();
+        bg_img["type"] = "3";
+        bg_img["path"] = url;
+        setBgImg(bg_img);
     });
 
     // 我的数据导出

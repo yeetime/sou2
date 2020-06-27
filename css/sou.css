@@ -25,6 +25,18 @@ body {
     height: 100%;
     position: relative;
     overflow: hidden;
+    /*加载背景图*/
+    background-image: none;
+    /* 背景图垂直、水平均居中 */
+    background-position: center center;
+    /* 背景图不平铺 */
+    background-repeat: no-repeat;
+    /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 此条属性必须设置否则可能无效 */
+    background-attachment: fixed;
+    /* 让背景图基于容器大小伸缩 */
+    background-size: cover;
+    /* 设置背景颜色，背景图加载过程中会显示背景色 */
+    background-color: #cccccc;
 }
 
 html {
@@ -84,6 +96,7 @@ a {
     height: 120px;
     margin: 20px auto;
     background: url("../icon/shlogo.png") no-repeat center/cover;
+    /*background: none no-repeat center/cover;*/
 }
 
 .con .shlogo a {
@@ -626,7 +639,7 @@ a {
 }
 
 .but-ordinary {
-    width: 30%;
+    width: 25%;
     height: 20px;
     border-radius: 3px;
     text-align: center;
