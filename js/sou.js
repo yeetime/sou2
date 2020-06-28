@@ -116,7 +116,7 @@ var themes_preinstall = {
 
 //背景图片
 var bg_img_preinstall = {
-    "type" : "3",// 1:使用主题默认的背景图片、2:关闭背景图片、3:使用自定义的背景图片
+    "type" : "1",// 1:使用主题默认的背景图片、2:关闭背景图片、3:使用自定义的背景图片
     "path" : "https://cdn.jsdelivr.net/gh/yeetime/img/20200627173550.png",//背景图片
 };
 
@@ -144,8 +144,8 @@ function setBgImg(bg_img){
 function setBgImgInit() {
     var bg_img = getBgImg();
 
+    $("input[name='wallpaper-type'][value="+bg_img["type"]+"]").attr("checked", "checked");
     if (bg_img["type"] === "3") {
-        $("input[name='wallpaper-type'][value="+bg_img["type"]+"]").attr("checked", "checked");
         $("#wallpaper-url").val(bg_img["path"]);
         $("#wallpaper_url").show();
     } else {
@@ -176,7 +176,7 @@ function setSeList(se_list) {
 // 获得默认搜索引擎
 function getSeDefault() {
     var se_default = Cookies.get('se_default');
-    return se_default ? se_default : 1;
+    return se_default ? se_default : "1";
 }
 
 // 主题初始化
@@ -226,7 +226,7 @@ function themesInit() {
 // 获取默认主题
 function getThemesDefault() {
     var theme_default = Cookies.get('theme_default');
-    return theme_default ? theme_default : 1;
+    return theme_default ? theme_default : "1";
 }
 
 // 修改默认主题
@@ -260,6 +260,7 @@ function setThemesInit() {
     var html = "";
     var themes = getThemes();
     var theme_default = getThemesDefault();
+
     for (var i in themes) {
         if (i === theme_default) {
             //html += "<button class=\"but-active but-ordinary set-theme\" data-id=\"" + i + "\">" + themes[i]["name"] + "</button>";
