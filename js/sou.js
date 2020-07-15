@@ -318,7 +318,7 @@ function seList() {
     var html = "";
     var se_list = getSeList();
     for (var i in se_list) {
-        html += "<li class='se-li' url='" + se_list[i]["url"] + "' name='" + se_list[i]["name"] + "' img='" + se_list[i]["img"] + "'><img src='" + se_list[i]["img"] + "'>" + se_list[i]["title"] + "</li>";
+        html += "<li class='se-li' data-url='" + se_list[i]["url"] + "' data-name='" + se_list[i]["name"] + "' data-img='" + se_list[i]["img"] + "'><img src='" + se_list[i]["img"] + "'>" + se_list[i]["title"] + "</li>";
     }
     $(".search-engine-list").html(html);
 }
@@ -498,9 +498,9 @@ $(document).ready(function () {
 
     // 搜索引擎列表点击
     $(".search-engine-list").on("click", ".se-li", function () {
-        var url = $(this).attr('url');
-        var name = $(this).attr('name');
-        var img = $(this).attr('img');
+        var url = $(this).attr('data-url');
+        var name = $(this).attr('data-name');
+        var img = $(this).attr('data-img');
         $(".search").attr("action", url);
         $(".wd").attr("name", name);
         $(".se").attr("src", img);

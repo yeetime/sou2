@@ -366,15 +366,30 @@
                     <div class="set_blocks">
                         <div class="set_blocks_title">壁纸</div>
                         <div class="set_blocks_content">
-                            <div id="wallpaper">
-                                <input type="radio" class="set-wallpaper" name="wallpaper-type" value="1"> 默认<br>
-                                <input type="radio" class="set-wallpaper" name="wallpaper-type" value="2"> 无<br>
-                                <input type="radio" class="set-wallpaper wallpaper-custom" name="wallpaper-type" value="3"> 自定义<br>
+                            <div class="from_container">
+                                <div class="from_row">
+                                    <div class="from_row_title"><b>壁纸设置</b></div>
+                                    <div class="from_row_content">
+                                        <div id="wallpaper">
+                                            <input type="radio" class="set-wallpaper" name="wallpaper-type" value="1"> 默认
+                                            <input type="radio" class="set-wallpaper" name="wallpaper-type" value="2"> 无
+                                            <input type="radio" class="set-wallpaper wallpaper-custom" name="wallpaper-type" value="3"> 自定义
+                                        </div>
+                                    </div>
+
+                                </div>
                                 <div id="wallpaper_url" style="display:none;">
-                                    <br>
-                                    图片地址：
-                                    <input type="text" name="wallpaper-url" id="wallpaper-url">
-                                    <button class="but-ordinary wallpaper-submit">确定</button>
+                                    <div class="from_row">
+                                        <div class="from_row_title"><b>自定义图片地址：</b></div>
+                                        <div class="from_row_content">
+                                            <input type="text" name="wallpaper-url" id="wallpaper-url">
+                                        </div>
+                                    </div>
+                                    <div class="from_row">
+                                        <div class="from_row_content right">
+                                            <button class="but-ordinary wallpaper-submit">保存</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -430,22 +445,22 @@
                 </div>
                 <span class="search-engine-tip"></span>
                 <ul class="search-engine-list">
-                    <li class="se-li" url="https://www.baidu.com/s" name="wd" img="./icon/baidu.ico">
+                    <li class="se-li" data-url="https://www.baidu.com/s" data-name="wd" data-img="./icon/baidu.ico">
                         <img src="./icon/baidu.ico">百度
                     </li>
-                    <li class="se-li" url="https://www.google.com/search" name="q" img="./icon/google_1.png">
+                    <li class="se-li" data-url="https://www.google.com/search" data-name="q" data-img="./icon/google_1.png">
                         <img src="./icon/google_1.png">谷歌
                     </li>
-                    <li class="se-li" url="https://cn.bing.com/search" name="q" img="./icon/bing.ico">
+                    <li class="se-li" data-url="https://cn.bing.com/search" data-name="q" data-img="./icon/bing.ico">
                         <img src="./icon/bing.ico">必应
                     </li>
-                    <li class="se-li" url="https://www.dogedoge.com/results" name="q" img="./icon/doge_ico.png">
+                    <li class="se-li" data-url="https://www.dogedoge.com/results" data-name="q" data-img="./icon/doge_ico.png">
                         <img src="./icon/doge_ico.png">多吉
                     </li>
-                    <li class="se-li" url="https://mijisou.com" name="q" img="./icon/mijisou.png">
+                    <li class="se-li" data-url="https://mijisou.com" data-name="q" data-img="./icon/mijisou.png">
                         <img src="./icon/mijisou.png">秘迹
                     </li>
-                    <li class="se-li" url="https://seeres.com/search" name="q" img="./icon/seeres.png">
+                    <li class="se-li" data-url="https://seeres.com/search" data-name="q" data-img="./icon/seeres.png">
                         <img src="./icon/seeres.png">seeres*
                     </li>
                 </ul>
