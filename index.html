@@ -366,15 +366,30 @@
                     <div class="set_blocks">
                         <div class="set_blocks_title">壁纸</div>
                         <div class="set_blocks_content">
-                            <div id="wallpaper">
-                                <input type="radio" class="set-wallpaper" name="wallpaper-type" value="1"> 默认<br>
-                                <input type="radio" class="set-wallpaper" name="wallpaper-type" value="2"> 无<br>
-                                <input type="radio" class="set-wallpaper wallpaper-custom" name="wallpaper-type" value="3"> 自定义<br>
+                            <div class="from_container">
+                                <div class="from_row">
+                                    <div class="from_row_title"><b>壁纸设置</b></div>
+                                    <div class="from_row_content">
+                                        <div id="wallpaper">
+                                            <input type="radio" class="set-wallpaper" name="wallpaper-type" value="1"> 默认
+                                            <input type="radio" class="set-wallpaper" name="wallpaper-type" value="2"> 无
+                                            <input type="radio" class="set-wallpaper wallpaper-custom" name="wallpaper-type" value="3"> 自定义
+                                        </div>
+                                    </div>
+
+                                </div>
                                 <div id="wallpaper_url" style="display:none;">
-                                    <br>
-                                    图片地址：
-                                    <input type="text" name="wallpaper-url" id="wallpaper-url">
-                                    <button class="but-ordinary wallpaper-submit">确定</button>
+                                    <div class="from_row">
+                                        <div class="from_row_title"><b>自定义图片地址：</b></div>
+                                        <div class="from_row_content">
+                                            <input type="text" name="wallpaper-url" id="wallpaper-url">
+                                        </div>
+                                    </div>
+                                    <div class="from_row">
+                                        <div class="from_row_content right">
+                                            <button class="but-ordinary wallpaper-submit">保存</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
