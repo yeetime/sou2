@@ -143,8 +143,7 @@ function setBgImg(bg_img){
 // 设置-壁纸
 function setBgImgInit() {
     var bg_img = getBgImg();
-
-    $("input[name='wallpaper-type'][value="+bg_img["type"]+"]").attr("checked", "checked");
+    $("input[name='wallpaper-type'][value="+bg_img["type"]+"]").click();
     if (bg_img["type"] === "3") {
         $("#wallpaper-url").val(bg_img["path"]);
         $("#wallpaper_url").show();
@@ -443,12 +442,6 @@ $(document).ready(function () {
     // 主题初始化(必须在页面元素都加载完成后再加载主题,每当页面元素改变时都应进行主题初始化)
     themesInit();
 
-    // 设置内容加载
-    setSeInit();//搜索引擎设置
-    setQuickInit();//快捷方式设置
-    setThemesInit();//主题方案
-    setBgImgInit();//壁纸
-
     // 选择搜索引擎点击事件
     $(document).on('click', function (e) {
         if ($(".search-engine").is(":hidden") && $(".se").is(e.target)) {
@@ -479,6 +472,12 @@ $(document).ready(function () {
             closeSide();
         } else {
             openSide();
+
+            // 设置内容加载
+            setSeInit();//搜索引擎设置
+            setQuickInit();//快捷方式设置
+            setThemesInit();//主题方案
+            setBgImgInit();//壁纸
         }
     });
     $("#content").click(function (event) {
