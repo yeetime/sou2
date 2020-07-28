@@ -658,14 +658,6 @@ a {
     color: #fff;
 }
 
-.my_data {
-    color: #fff;
-}
-
-.my_data textarea {
-    width: 100%
-}
-
 /*表单样式*/
 .from_container {
     border: 1px solid #599cff;
