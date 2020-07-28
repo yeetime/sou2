@@ -395,40 +395,6 @@ function setQuickInit() {
 }
 
 /**
- * 导入备份
- * @param json
- */
-function importData(json) {
-    // json 格式校验
-    try {
-        var mydata = JSON.parse(json);
-    } catch (e) {
-        alert("数据解析异常");
-        return;
-    }
-    if (typeof mydata != 'object') {
-        alert("数据格式错误");
-        return;
-    }
-
-    if (confirm("当前数据将被覆盖！是否继续导入？")) {
-        setSeList(mydata["se"]);
-        if (mydata["se_default"]) {
-            Cookies.set('se_default', mydata["se_default"], {expires: 36500});
-        }
-        setQuickList(mydata["quick"]);
-        setThemes(mydata["themes"]);
-        setThemesDefault(mydata["theme_default"]);
-
-        setSeInit();
-        setQuickInit();
-        setThemesInit();
-
-        alert("导入成功");
-    }
-}
-
-/**
  * 下載文本为文件
  * @param filename 文件名
  * @param text     内容
@@ -750,21 +716,8 @@ $(document).ready(function () {
 
     // 我的数据导出
     $("#my_data_out").click(function () {
-        var se = getSeList();
-        var se_default = getSeDefault();
-        var quick = getQuickList();
-        var themes = getThemes()
-        var theme_default = getThemesDefault()
-
-        var mydata = {
-            "se": se,
-            "se_default": se_default,
-            "quick": quick,
-            "themes": themes,
-            "theme_default": theme_default,
-        };
-        var json = JSON.stringify(mydata);
-
+        var cookies = Cookies.get();
+        var json = JSON.stringify(cookies);
         download("back-up-" + $.now() + ".json", json);
     });
 
@@ -786,8 +739,25 @@ $(document).ready(function () {
             //当读取完成后回调这个函数,然后此时文件的内容存储到了result中,直接操作即可
             //console.log(this.result);
 
-            // 导入数据
-            importData(this.result);
+            // json 格式校验
+            var mydata;
+            try {
+                mydata = JSON.parse(this.result);
+            } catch (e) {
+                alert("数据解析异常");
+                return;
+            }
+            if (typeof mydata != 'object') {
+                alert("数据格式错误");
+                return;
+            }
+
+            if (confirm("当前数据将被覆盖！是否继续导入？")) {
+                for(var key in mydata) {
+                    Cookies.set(key, mydata[key], {expires: 36500});
+                }
+                alert("导入成功");
+            }
         }
     });
 });
