@@ -210,6 +210,11 @@ function themesInit() {
         "background-color": theme["pop_bg"],
         "box-shadow": "0 5px 20px 0 " + theme["shadow"],
     });//搜索引擎选择弹窗
+    $("#keywords").css({
+        "background-color": theme["pop_bg"],
+        "box-shadow": "0 5px 20px 0 " + theme["shadow"],
+        "color": theme["text_color"]
+    });//关键字提示弹窗
     $(".search-engine-list .se-li").css({
         "background-color": theme["bottom_bg"],
         "color": theme["text_color"],
@@ -283,12 +288,41 @@ function focusWd() {
     });//输入框
 }
 
-//搜索框取消高亮
+// 搜索框取消高亮
 function blurWd() {
     $(".wd").css({
         "background-color": "",
         "box-shadow": "",
     });//输入框
+}
+
+// 关键字提示
+function keywordReminder() {
+    var keyword = $(".wd").val();
+    if (keyword != "") {
+        $.ajax({
+            url: 'https://suggestion.baidu.com/su?wd=' + keyword,
+            dataType: 'jsonp',
+            jsonp: 'cb', //回调函数的参数名(键值)key
+            success: function(data) {
+                $("#keywords").empty().show();
+                if (data.s == '') {
+                    $("#keywords").empty().show();
+                    $('#keywords').hide();
+                }
+                $.each(data.s, function() {
+                    $('#keywords').append('<li>' + this + '</li>');
+                });
+            },
+            error: function() {
+                $("#keywords").empty().show();
+                $("#keywords").hide();
+            }
+        })
+    } else {
+        $("#keywords").empty().show();
+        $("#keywords").hide();
+    }
 }
 
 // 搜索框数据加载
@@ -442,8 +476,9 @@ $(document).ready(function () {
     // 主题初始化(必须在页面元素都加载完成后再加载主题,每当页面元素改变时都应进行主题初始化)
     themesInit();
 
-    // 选择搜索引擎点击事件
+    // 点击事件
     $(document).on('click', function (e) {
+        // 选择搜索引擎点击
         if ($(".search-engine").is(":hidden") && $(".se").is(e.target)) {
             if ($(".se").is(e.target)) {
                 $(".search-engine").show();
@@ -453,6 +488,12 @@ $(document).ready(function () {
                 $(".search-engine").hide();
             }
         }
+
+        // 自动提示隐藏
+        if (!$(".sou").is(e.target) && $(".sou").has(e.target).length === 0) {
+            $("#keywords").hide();
+        }
+
     });
 
     // 搜索引擎列表点击
@@ -464,6 +505,29 @@ $(document).ready(function () {
         $(".wd").attr("name", name);
         $(".se").attr("src", img);
         $(".search-engine").hide();
+    });
+
+    // 搜索框获得焦点事件
+    $(".wd").focus(function () {
+        focusWd();
+        keywordReminder();
+    });
+
+    // 搜索框失去焦点事件
+    $(".wd").blur(function () {
+        blurWd();
+    });
+
+    // 自动提示( 调用百度 api ）
+    $('.wd').keyup(function() {
+        keywordReminder();
+    });
+
+    // 点击自动提示的关键字
+    $("#keywords").on("click", "li", function () {
+        var wd = $(this).text();
+        $(".wd").val(wd);
+        $(".search").submit();
     });
 
     // 菜单点击
@@ -484,16 +548,8 @@ $(document).ready(function () {
         if ($("#menu").attr("class") === "on") {
             closeSide();
         }
-    });
-
-    // 搜索框获得焦点事件
-    $(".wd").focus(function () {
-        focusWd();
-    });
-
-    // 搜索框失去焦点事件
-    $(".wd").blur(function () {
-        blurWd();
+        // 关闭关键字提示
+        // $("#keywords").hide();
     });
 
     // 侧栏标签卡切换

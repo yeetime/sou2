@@ -180,6 +180,36 @@ a {
     color: #777;
 }
 
+#keywords {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #FFF;
+    padding: 0 0;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px 0 #d8d7d7;
+    transition: all 0.3s;
+    display: none;
+    z-index: 999;
+    box-sizing: border-box;
+    max-height: 208px;
+    overflow-x: hidden;
+}
+
+#keywords li {
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    line-height: 1.1;
+    font-size: 1.1em;
+    padding: 4px .681818em;
+    margin: 0 auto;
+    position: static;
+}
+
 .search-engine {
     position: absolute;
     top: 60px;
