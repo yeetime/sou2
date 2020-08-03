@@ -304,17 +304,14 @@ function keywordReminder() {
             url: 'https://suggestion.baidu.com/su?wd=' + keyword,
             dataType: 'jsonp',
             jsonp: 'cb', //回调函数的参数名(键值)key
-            success: function(data) {
+            success: function (data) {
                 $("#keywords").empty().show();
-                if (data.s == '') {
-                    $("#keywords").empty().show();
-                    $('#keywords').hide();
-                }
-                $.each(data.s, function() {
-                    $('#keywords').append('<li>' + this + '</li>');
+                $.each(data.s, function (i, val) {
+                    $('#keywords').append("<li class=\"keyword\" data-id=\"" + (i + 1) + "\">" + val + "</li>");
                 });
+                $("#keywords").attr("data-length", data.s["length"]);
             },
-            error: function() {
+            error: function () {
                 $("#keywords").empty().show();
                 $("#keywords").hide();
             }
@@ -519,7 +516,11 @@ $(document).ready(function () {
     });
 
     // 自动提示( 调用百度 api ）
-    $('.wd').keyup(function() {
+    $('.wd').keyup(function(event) {
+        var key = event.keyCode;
+        // 屏蔽上下键
+        var shieldKey = [38, 40];
+        if (shieldKey.includes(key)) return;
         keywordReminder();
     });
 
@@ -528,6 +529,29 @@ $(document).ready(function () {
         var wd = $(this).text();
         $(".wd").val(wd);
         $(".search").submit();
+    });
+
+    // 自动提示键盘方向键选择操作
+    $(".wd").keydown(function (event) {//上下键获取焦点
+        var key = event.keyCode;
+        if ($.trim($(this).val()).length === 0) return;
+
+        var id = $(".keyword-active").attr("data-id");
+        if (id === undefined) id = 0;
+
+        if (key === 38) { /*向上按钮*/
+            id--;
+        } else if (key === 40) {/*向下按钮*/
+            id++;
+        } else {
+            return;
+        }
+        var length = $("#keywords").attr("data-length");
+        if (id > length) id = 1;
+        if (id < 1) id = length;
+
+        $(".keyword[data-id=" + id + "]").addClass("keyword-active").siblings().removeClass("keyword-active");
+        $(".wd").val($(".keyword[data-id=" + id + "]").text());
     });
 
     // 菜单点击

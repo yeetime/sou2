@@ -210,6 +210,10 @@ a {
     position: static;
 }
 
+.keyword-active {
+    font-weight: bold;
+}
+
 .search-engine {
     position: absolute;
     top: 60px;
