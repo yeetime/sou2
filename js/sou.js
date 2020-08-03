@@ -210,6 +210,11 @@ function themesInit() {
         "background-color": theme["pop_bg"],
         "box-shadow": "0 5px 20px 0 " + theme["shadow"],
     });//搜索引擎选择弹窗
+    $("#keywords").css({
+        "background-color": theme["pop_bg"],
+        "box-shadow": "0 5px 20px 0 " + theme["shadow"],
+        "color": theme["text_color"]
+    });//关键字提示弹窗
     $(".search-engine-list .se-li").css({
         "background-color": theme["bottom_bg"],
         "color": theme["text_color"],
@@ -283,12 +288,38 @@ function focusWd() {
     });//输入框
 }
 
-//搜索框取消高亮
+// 搜索框取消高亮
 function blurWd() {
     $(".wd").css({
         "background-color": "",
         "box-shadow": "",
     });//输入框
+}
+
+// 关键字提示
+function keywordReminder() {
+    var keyword = $(".wd").val();
+    if (keyword != "") {
+        $.ajax({
+            url: 'https://suggestion.baidu.com/su?wd=' + keyword,
+            dataType: 'jsonp',
+            jsonp: 'cb', //回调函数的参数名(键值)key
+            success: function (data) {
+                $("#keywords").empty().show();
+                $.each(data.s, function (i, val) {
+                    $('#keywords').append("<li class=\"keyword\" data-id=\"" + (i + 1) + "\">" + val + "</li>");
+                });
+                $("#keywords").attr("data-length", data.s["length"]);
+            },
+            error: function () {
+                $("#keywords").empty().show();
+                $("#keywords").hide();
+            }
+        })
+    } else {
+        $("#keywords").empty().show();
+        $("#keywords").hide();
+    }
 }
 
 // 搜索框数据加载
@@ -442,8 +473,9 @@ $(document).ready(function () {
     // 主题初始化(必须在页面元素都加载完成后再加载主题,每当页面元素改变时都应进行主题初始化)
     themesInit();
 
-    // 选择搜索引擎点击事件
+    // 点击事件
     $(document).on('click', function (e) {
+        // 选择搜索引擎点击
         if ($(".search-engine").is(":hidden") && $(".se").is(e.target)) {
             if ($(".se").is(e.target)) {
                 $(".search-engine").show();
@@ -453,6 +485,12 @@ $(document).ready(function () {
                 $(".search-engine").hide();
             }
         }
+
+        // 自动提示隐藏
+        if (!$(".sou").is(e.target) && $(".sou").has(e.target).length === 0) {
+            $("#keywords").hide();
+        }
+
     });
 
     // 搜索引擎列表点击
@@ -464,6 +502,56 @@ $(document).ready(function () {
         $(".wd").attr("name", name);
         $(".se").attr("src", img);
         $(".search-engine").hide();
+    });
+
+    // 搜索框获得焦点事件
+    $(".wd").focus(function () {
+        focusWd();
+        keywordReminder();
+    });
+
+    // 搜索框失去焦点事件
+    $(".wd").blur(function () {
+        blurWd();
+    });
+
+    // 自动提示( 调用百度 api ）
+    $('.wd').keyup(function(event) {
+        var key = event.keyCode;
+        // 屏蔽上下键
+        var shieldKey = [38, 40];
+        if (shieldKey.includes(key)) return;
+        keywordReminder();
+    });
+
+    // 点击自动提示的关键字
+    $("#keywords").on("click", "li", function () {
+        var wd = $(this).text();
+        $(".wd").val(wd);
+        $(".search").submit();
+    });
+
+    // 自动提示键盘方向键选择操作
+    $(".wd").keydown(function (event) {//上下键获取焦点
+        var key = event.keyCode;
+        if ($.trim($(this).val()).length === 0) return;
+
+        var id = $(".keyword-active").attr("data-id");
+        if (id === undefined) id = 0;
+
+        if (key === 38) { /*向上按钮*/
+            id--;
+        } else if (key === 40) {/*向下按钮*/
+            id++;
+        } else {
+            return;
+        }
+        var length = $("#keywords").attr("data-length");
+        if (id > length) id = 1;
+        if (id < 1) id = length;
+
+        $(".keyword[data-id=" + id + "]").addClass("keyword-active").siblings().removeClass("keyword-active");
+        $(".wd").val($(".keyword[data-id=" + id + "]").text());
     });
 
     // 菜单点击
@@ -484,16 +572,8 @@ $(document).ready(function () {
         if ($("#menu").attr("class") === "on") {
             closeSide();
         }
-    });
-
-    // 搜索框获得焦点事件
-    $(".wd").focus(function () {
-        focusWd();
-    });
-
-    // 搜索框失去焦点事件
-    $(".wd").blur(function () {
-        blurWd();
+        // 关闭关键字提示
+        // $("#keywords").hide();
     });
 
     // 侧栏标签卡切换
