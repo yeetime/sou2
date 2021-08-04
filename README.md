@@ -16,7 +16,7 @@
 
 ### 示例页面：
 
-+ [https://alone.run/](https://alone.run/)
++ [https://yeetime.top/sou2/](https://yeetime.top/sou2/)
 
 ### 图标：
 图标调用了阿里的图标 [https://www.iconfont.cn/](https://www.iconfont.cn/)
