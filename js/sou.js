@@ -32,28 +32,7 @@ var se_list_preinstall = {
         url: "https://cn.bing.com/search",
         name: "q",
         img: "./icon/bing.ico",
-    },
-    '4': {
-        id: 4,
-        title: "多吉",
-        url: "https://www.dogedoge.com/results",
-        name: "q",
-        img: "./icon/doge_ico.png",
-    },
-    '5': {
-        id: 5,
-        title: "秘迹",
-        url: "https://mijisou.com",
-        name: "q",
-        img: "./icon/mijisou.png",
-    },
-    '6': {
-        id: 6,
-        title: "seeres*",
-        url: "https://seeres.com/search",
-        name: "q",
-        img: "./icon/seeres.png",
-    },
+    }
 };
 
 // 主页快捷方式【预设】
@@ -116,7 +95,7 @@ var themes_preinstall = {
 
 //背景图片
 var bg_img_preinstall = {
-    "type" : "1",// 1:使用主题默认的背景图片、2:关闭背景图片、3:使用自定义的背景图片
+    "type" : "3",// 1:使用主题默认的背景图片、2:关闭背景图片、3:使用自定义的背景图片
     "path" : "https://cdn.jsdelivr.net/gh/yeetime/img/20200627173550.png",//背景图片
 };
 
