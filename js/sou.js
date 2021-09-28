@@ -680,10 +680,10 @@ $(document).ready(function () {
 
         var quick_list = getQuickList();
 
-        if (quick_list[key]) {
-            alert("顺序:" + key + " 已有数据，不可用");
-            return;
-        }
+//         if (quick_list[key]) {
+//             alert("顺序:" + key + " 已有数据，不可用");
+//             return;
+//         }
 
         if (key_inhere && key != key_inhere) {
             delete quick_list[key_inhere];
